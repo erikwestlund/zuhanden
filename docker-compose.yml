@@ -1,0 +1,21 @@
+version: '3.0'
+services:
+  postgres:
+    restart: always
+    image: postgres:10
+    volumes:
+     - postgresdata:/var/lib/postgresql/data
+    environment:
+    - POSTGRES_USER=zuhanden
+    - POSTGRES_PASSWORD=secret
+    - POSTGRES_DB=zuhanden
+    ports:
+    - "5432:5432"
+    networks:
+     - zuhanden
+volumes:
+  postgresdata:
+    driver: local
+networks:
+  zuhanden:
+    driver: "bridge"
