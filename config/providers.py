@@ -8,6 +8,8 @@ from masonite.providers import (AppProvider, BroadcastProvider, CacheProvider,
                                 WhitenoiseProvider)
 from masonite.validation.providers.ValidationProvider import ValidationProvider
 
+from app.providers.CommandProvider import CommandProvider
+
 """Providers List
 Providers are a simple way to remove or add functionality for Masonite
 The providers in this list are either ran on server start or when a
@@ -38,5 +40,5 @@ PROVIDERS = [
     # Third Party Providers
 
     # Application Providers
-
+    CommandProvider
 ]

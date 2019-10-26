@@ -19,11 +19,11 @@ mix.sass('resources/sass/app.scss', 'storage/static/css/app.css')
         postCss: [tailwindcss('./tailwind.config.js')],
     })
     .js('resources/js/app.js', 'storage/static/js/app.js')
-    // .extract([
-    //     'vue',
-    //     'axios',
-    //     'lodash'
-    // ]);
+    .extract([
+        'vue',
+        'axios',
+        // 'lodash'
+    ]);
 
 if (mix.inProduction()) {
     const whitelistPatterns = [

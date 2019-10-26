@@ -1,5 +1,9 @@
 @tailwind base;
 @tailwind components;
 
+body {
+  font-family: 'Source Sans Pro', sans-serif;
+  color: #462a16;
+}
 
 @tailwind utilities;

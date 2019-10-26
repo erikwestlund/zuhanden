@@ -1,6 +1,7 @@
 node_modules/*
 *.pyc
 .env
+.npmrc
 *__pycache__
 venv
 .env.*

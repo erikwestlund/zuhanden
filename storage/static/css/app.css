@@ -627,6 +627,11 @@ video {
   }
 }
 
+body {
+  font-family: "Source Sans Pro", sans-serif;
+  color: #462a16;
+}
+
 .sr-only {
   position: absolute;
   width: 1px;
