@@ -7,3 +7,4 @@ venv
 .vscode
 .pytest_cache
 !.env.testing
+.idea*

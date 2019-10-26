@@ -9,6 +9,7 @@ verify_ssl = true
 masonite-cli = "*"
 psycopg2-binary = "*"
 libsass = "*"
+masonite = "*"
 
 [requires]
 python_version = "3.7"

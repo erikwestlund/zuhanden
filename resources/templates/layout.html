@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600|Roboto Mono" rel="stylesheet"
+      type="text/css">
+<link href="/static/css/app.css" rel="stylesheet" type="text/css">
+
+<title>{% block title %} {{ config('application.name', 'Home') }} {% endblock %}</title>
+
+<meta name="csrf-token" content="{{ csrf_token }}">
+
+</head>
+<body class="pb-12 border-t-8 border-blue-darker bg-grey-lightest">
+<div id="app" class="lg:px-24 p-6">
+<header class="container mx-auto">
+    Header
+</header>
+<main role="main" class="container mx-auto pt-12">
+    <div>
+        <div class="mt-8">
+            {% block main %}
+                {% block content %}{% endblock %}
+            {% endblock %}
+        </div>
+    </div>
+</main>
+
+</div>
+
+
+<!-- JavaScript -->
+{#<script src="/static/manifest.js"></script>#}
+{#<script src="/static/vendor.js"></script>#}
+<script src="/static/app.js"></script>
+
+</body>
+</html>
