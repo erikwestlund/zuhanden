@@ -1,7 +1,9 @@
 """A SeedAdminCommand Command."""
 from cleo import Command
-from masonite.helpers import password
+import pendulum
+
 from app.User import User
+from masonite.helpers import password as hash_bcrypt
 
 class SeedAdminCommand(Command):
     """
@@ -11,14 +13,13 @@ class SeedAdminCommand(Command):
     """
 
     def handle(self):
+        self.line('<info>Add an administrator to the database.</info>')
+
         email = self.ask('What is your email?')
         name = self.ask('What is your name?')
-        password = self.ask('Provide a password.')
+        password = self.secret('Provide a password.')
 
-        from wsgi import container
-        validator = container.make('Validator')
-
-        errors = self.validate_input(email, name, validator)
+        errors = self.validate_input(email, name, password)
 
         if errors:
             self.print_errors(errors)
@@ -26,7 +27,8 @@ class SeedAdminCommand(Command):
             user = User.create(
                 email=email,
                 name=name,
-                password=password(password)
+                password=hash_bcrypt(password),
+                verified_at=pendulum.now()
             )
             self.line('<info>User generated successfully.</info>')
 
@@ -35,13 +37,22 @@ class SeedAdminCommand(Command):
             for message in errors[error]:
                 self.error(message)
 
-    def validate_input(self, email, name, validator):
+    def validate_input(self, email, name, password):
+        from wsgi import container
+        validator = container.make('Validator')
         errors = validator.validate({
             'email': email or '',
-            'name': name or ''
+            'name': name or '',
+            'password': password or ''
         },
-            validator.required(['email', 'name']),
+            validator.required(['email', 'name', 'password']),
             validator.email(['email']),
         )
+
+        users_with_email = User.where('email', email).count()
+
+        if(users_with_email >= 1):
+            errors.update({'email_exists': ['This email already exists in database']})
+
         return errors
 

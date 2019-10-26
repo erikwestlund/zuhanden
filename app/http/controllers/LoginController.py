@@ -12,7 +12,7 @@ class LoginController:
         """LoginController Constructor."""
         pass
 
-    def show(self, request: Request, view: View, auth: Auth):
+    def show(self, request: Request, view: View):
         """Show the login page.
 
         Arguments:
@@ -24,8 +24,8 @@ class LoginController:
             masonite.view.View -- Returns the Masonite view class.
         """
         if request.user():
-            return request.redirect('/home')
-        return view.render('auth/login', {'app': request.app().make('Application'), 'Auth': auth})
+            return request.redirect('/')
+        return view.render('admin/login')
 
     def store(self, request: Request, auth: Auth):
         """Login the user.
