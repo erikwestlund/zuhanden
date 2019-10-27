@@ -6,7 +6,7 @@ from masonite.view import View
 
 from app.helpers.mix import mix
 
-class HelpersProvider(ServiceProvider):
+class CustomHelpersProvider(ServiceProvider):
     """Provides Services To The Service Container."""
 
     wsgi = False

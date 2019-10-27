@@ -12,7 +12,7 @@ class LoginController:
         """LoginController Constructor."""
         pass
 
-    def show(self, request: Request, view: View):
+    def show(self, request: Request, view: View, auth: Auth):
         """Show the login page.
 
         Arguments:

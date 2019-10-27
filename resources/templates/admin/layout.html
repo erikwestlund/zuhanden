@@ -8,49 +8,66 @@
 <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600|Roboto Mono"
       rel="stylesheet"
       type="text/css">
-<link href="/static/css/app.css" rel="stylesheet" type="text/css">
+<link href="{{ mix('/css/app.css') }}" rel="stylesheet" type="text/css">
 
 <title>{% block title %}
-    {{ config('application.name', 'Home') }}
+    Zuhanden
 {% endblock %}</title>
-
-{{ mix('test') }}
 
 <meta name="csrf-token" content="{{ csrf_token }}">
 <script>
     window.State = {user: {loggedIn: false}}
 </script>
 </head>
-<body class="pb-12 border-t-8 border-blue-900 bg-gray-100">
+<body class="pb-12 border-t-4 border-blue-700 bg-gray-100">
 
 
 <div id="app">
-{#Navigation Bar#}
-    <navigation-bar :loggedIn="{{ 1 if auth() else 0 }}"
-    ></navigation-bar>
 
-<header class="container mx-auto">
-    <h1 class="text-4xl font-bold">
-        {{ config('application.name', 'Home') }}
-    </h1>
+
+<header>
+    <navigation-bar :logged-in="false"></navigation-bar>
 </header>
-<main role="main" class="container mx-auto pt-12">
-    <div>
-        <div class="mt-8">
-            {% block main %}
-                {% block content %}{% endblock %}
-            {% endblock %}
-        </div>
+
+{% if session().has('success') %}
+
+    <div class="alert alert-success">
+        {{ session().get('success') }}
     </div>
+
+{% elif session().has('warning') %}
+
+    <div class="alert alert-warning">
+        {{ session().get('warning') }}
+    </div>
+
+{% elif session().has('danger') %}
+
+    <div class="alert alert-danger">
+        {{ session().get('danger') }}
+    </div>
+
+{% endif %}
+
+<main role="main" class="container mx-auto pt-12">
+    {% block main %}
+        {% block content %}{% endblock %}
+    {% endblock %}
 </main>
+
+
+<flash initial-message=""
+       initial-level="{{ 'success' }}"
+       :initial-duration="3"
+></flash>
 
 </div>
 
 
 <!-- JavaScript -->
-<script src="/static/js/manifest.js"></script>
-<script src="/static/js/vendor.js"></script>
-<script src="/static/js/app.js"></script>
+<script src="{{ mix('/js/manifest.js') }}"></script>
+<script src="{{ mix('/js/vendor.js') }}"></script>
+<script src="{{ mix('/js/app.js') }}"></script>
 
 </body>
 </html>

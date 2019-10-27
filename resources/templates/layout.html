@@ -1,46 +1,58 @@
 <!DOCTYPE html>
 <html>
 <head>
-<!-- Required meta tags -->
+
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600|Roboto Mono"
       rel="stylesheet"
       type="text/css">
-<link href="/static/css/app.css" rel="stylesheet" type="text/css">
+<link href="{{ mix('/css/app.css') }}" rel="stylesheet" type="text/css">
 
 <title>{% block title %}
-    {{ config('application.name', 'Home') }}
+    Zuhanden
 {% endblock %}</title>
 
 <meta name="csrf-token" content="{{ csrf_token }}">
-
+<script>
+    window.State = {{ state | tojson | safe }}
+</script>
 </head>
-<body class="pb-12 border-t-8 border-blue-900 bg-gray-100">
-<div id="app" class="lg:px-24 p-6">
-<header class="container mx-auto">
-    <h1 class="text-4xl font-bold">
-        {{ config('application.name', 'Home') }}
-    </h1>
+<body class="pb-12 border-t-4 border-blue-700 bg-gray-100">
+
+
+<div id="app">
+
+
+<header>
+    <navigation-bar :logged-in="{{ 1 if state.user.loggedIn else 0 }}"></navigation-bar>
 </header>
+
+<div class="container mx-auto p-6">
+    {% include '_flash.html' %}
+</div>
+
+
 <main role="main" class="container mx-auto pt-12">
-    <div>
-        <div class="mt-8">
-            {% block main %}
-                {% block content %}{% endblock %}
-            {% endblock %}
-        </div>
-    </div>
+    {% block main %}
+        {% block content %}{% endblock %}
+    {% endblock %}
 </main>
+
+
+<flash initial-message=""
+       initial-level="{{ 'success' }}"
+       :initial-duration="3"
+></flash>
 
 </div>
 
 
 <!-- JavaScript -->
-<script src="/static/js/manifest.js"></script>
-<script src="/static/js/vendor.js"></script>
-<script src="/static/js/app.js"></script>
+<script src="{{ mix('/js/manifest.js') }}"></script>
+<script src="{{ mix('/js/vendor.js') }}"></script>
+<script src="{{ mix('/js/app.js') }}"></script>
 
 </body>
 </html>
