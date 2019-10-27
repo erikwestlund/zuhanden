@@ -25,7 +25,7 @@ class LoginController:
         """
         if request.user():
             return request.redirect('/')
-        return view.render('admin/login')
+        return view.render('users/login')
 
     def store(self, request: Request, auth: Auth):
         """Login the user.

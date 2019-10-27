@@ -1,11 +1,11 @@
-"""A CommandProvider Service Provider."""
+"""A CommandsProvider Service Provider."""
 
 from masonite.provider import ServiceProvider
 
 from app.commands.SeedAdminCommand import SeedAdminCommand
 
 
-class CommandProvider(ServiceProvider):
+class CommandsProvider(ServiceProvider):
     """Provides commands To The Service Container."""
 
     wsgi = False

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600|Roboto Mono"
+      rel="stylesheet"
+      type="text/css">
+<link href="/static/css/app.css" rel="stylesheet" type="text/css">
+
+<title>{% block title %}
+    {{ config('application.name', 'Home') }}
+{% endblock %}</title>
+
+{{ mix('test') }}
+
+<meta name="csrf-token" content="{{ csrf_token }}">
+<script>
+    window.State = {user: {loggedIn: false}}
+</script>
+</head>
+<body class="pb-12 border-t-8 border-blue-900 bg-gray-100">
+
+
+<div id="app">
+{#Navigation Bar#}
+    <navigation-bar :loggedIn="{{ 1 if auth() else 0 }}"
+    ></navigation-bar>
+
+<header class="container mx-auto">
+    <h1 class="text-4xl font-bold">
+        {{ config('application.name', 'Home') }}
+    </h1>
+</header>
+<main role="main" class="container mx-auto pt-12">
+    <div>
+        <div class="mt-8">
+            {% block main %}
+                {% block content %}{% endblock %}
+            {% endblock %}
+        </div>
+    </div>
+</main>
+
+</div>
+
+
+<!-- JavaScript -->
+<script src="/static/js/manifest.js"></script>
+<script src="/static/js/vendor.js"></script>
+<script src="/static/js/app.js"></script>
+
+</body>
+</html>

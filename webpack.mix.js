@@ -13,17 +13,20 @@ class TailwindExtractor {
     }
 }
 
-mix.sass('resources/sass/app.scss', 'storage/static/css/app.css')
+mix.setPublicPath('storage/static')
+    .setResourceRoot('/resources')
+    .sass('resources/sass/app.scss', 'storage/static/css/app.css')
+    .js('resources/js/app.js', 'storage/static/js/app.js')
     .options({
         processCssUrls: false,
         postCss: [tailwindcss('./tailwind.config.js')],
     })
-    .js('resources/js/app.js', 'storage/static/js/app.js')
     .extract([
         'vue',
         'axios',
-        // 'lodash'
-    ]);
+        'lodash'
+    ])
+    .version();
 
 if (mix.inProduction()) {
     const whitelistPatterns = [

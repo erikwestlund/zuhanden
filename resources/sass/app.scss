@@ -1,6 +1,10 @@
 @tailwind base;
 @tailwind components;
 
+@import 'transitions';
+@import 'buttons';
+@import 'alerts';
+
 body {
   font-family: 'Source Sans Pro', sans-serif;
   color: #462a16;

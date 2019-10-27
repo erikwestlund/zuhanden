@@ -1,0 +1,32 @@
+.alert-info,
+.alert-message {
+  @apply bg-blue-100 border border-blue-300 rounded text-blue-900 px-4 py-4 text-sm;
+}
+
+.alert-warning {
+  @apply bg-orange-100 border border-orange-300 rounded text-orange-900 px-4 py-4 text-sm;
+}
+
+.alert-success {
+  @apply bg-green-100 border border-green-300 rounded text-green-900 px-4 py-4 text-sm;
+}
+
+.alert-danger {
+  @apply bg-red-100 border border-red-300 rounded text-red-900 px-4 py-4 text-sm;
+}
+
+.alert-x-message {
+  @apply text-blue-600;
+}
+
+.alert-x-warning {
+  @apply text-orange-600;
+}
+
+.alert-x-success {
+  @apply text-green-600;
+}
+
+.alert-x-danger {
+  @apply text-red-600;
+}
