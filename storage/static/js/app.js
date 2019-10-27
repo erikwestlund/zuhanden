@@ -32499,7 +32499,7 @@ var render = function() {
               staticClass:
                 "block uppercase tracking-wide text-gray-700 font-bold mb-2",
               class: { "text-red-500": _vm.form.errors.has("password") },
-              attrs: { placeholder: "Password", for: "grid-password" }
+              attrs: { for: "grid-password" }
             },
             [_vm._v("\n                Password\n            ")]
           ),
@@ -32516,7 +32516,11 @@ var render = function() {
             staticClass:
               "appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500",
             class: { "border border-red-500": _vm.form.errors.has("password") },
-            attrs: { id: "grid-password", type: "password" },
+            attrs: {
+              id: "grid-password",
+              type: "password",
+              placeholder: "Password"
+            },
             domProps: { value: _vm.form.password },
             on: {
               input: function($event) {

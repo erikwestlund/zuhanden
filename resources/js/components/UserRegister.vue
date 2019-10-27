@@ -57,7 +57,6 @@
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                 <label class="block uppercase tracking-wide text-gray-700 font-bold mb-2"
                        :class="{'text-red-500' : form.errors.has('password')}"
-                       placeholder="Password"
                        for="grid-password">
                     Password
                 </label>
@@ -66,6 +65,7 @@
                     :class="{'border border-red-500' : form.errors.has('password')}"
                     id="grid-password"
                     type="password"
+                    placeholder="Password"
                     v-model="form.password"
                 >
 
