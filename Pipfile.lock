@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "7c4e75bf7c6a12035467862f5a43c4cf483823c7d6e5deb1fde8723bdde91845"
+            "sha256": "cfdc6ea8c82b9ca225fb5b0b62c1c980bb6146ba68119cfb5214d6c6976ba6e5"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -16,13 +16,6 @@
         ]
     },
     "default": {
-        "appdirs": {
-            "hashes": [
-                "sha256:9e5896d1372858f8dd3344faf4e5014d21849c756c8d5701f78f8a103b372d92",
-                "sha256:d8b24664561d0d34ddfaec54636d502d7cea6e29c3eaf68f3df6180863e2166e"
-            ],
-            "version": "==1.4.3"
-        },
         "asn1crypto": {
             "hashes": [
                 "sha256:7bb1cc02a5620b3d72da4ba070bda2f44f0e61b44dee910a302eddff802b6fb5",
@@ -36,13 +29,6 @@
                 "sha256:e7c742382eff2caed61f87a39d13f99109088e5e93f04d76eb8d4b28aa143f45"
             ],
             "version": "==1.3.0"
-        },
-        "attrs": {
-            "hashes": [
-                "sha256:08a96c641c3a74e44eb59afb61a24f2cb9f4d7188748e76ba4bb5edfa3cb7d1c",
-                "sha256:f7b7ce16570fe9965acd6d30101a28f62fb4a7f9e926b3bbc9b61f8b04247e72"
-            ],
-            "version": "==19.3.0"
         },
         "backpack": {
             "hashes": [
@@ -72,14 +58,6 @@
                 "sha256:ff032765bb8716d9387fd5376d987a937254b0619eff0972779515b5c98820bc"
             ],
             "version": "==3.1.7"
-        },
-        "black": {
-            "hashes": [
-                "sha256:09a9dcb7c46ed496a9850b76e4e825d6049ecd38b611f1224857a79bd985a8cf",
-                "sha256:68950ffd4d9169716bcb8719a56c07a2f4485354fec061cdd5910aa07369731c"
-            ],
-            "index": "pypi",
-            "version": "==19.3b0"
         },
         "blinker": {
             "hashes": [
@@ -151,13 +129,6 @@
                 "sha256:9b7f79f1aa470a025c0d28c76aa225ee9e65028d32f80032e871aa3500df61b8"
             ],
             "version": "==0.6.8"
-        },
-        "click": {
-            "hashes": [
-                "sha256:2335065e6395b9e67ca716de5f7526736bfa6ceead690adf616d925bdc622b13",
-                "sha256:5b94b49521f6456670fdb30cd82a4eca9412788a93fa6dd6df72c94d5a8ff2d7"
-            ],
-            "version": "==7.0"
         },
         "cryptography": {
             "hashes": [
@@ -313,10 +284,10 @@
         },
         "masonite": {
             "hashes": [
-                "sha256:ca0442d51095dc77494a40d723f91dd33fa44cb3f1c74ab8ceb912efdb982753"
+                "sha256:30a095c0ccb37ba7cb93b516d0ba962498218394214e838690724357af6130f5"
             ],
             "index": "pypi",
-            "version": "==2.3.0b1.post2"
+            "version": "==2.2.25"
         },
         "masonite-cli": {
             "hashes": [
@@ -324,6 +295,30 @@
             ],
             "index": "pypi",
             "version": "==2.2.0"
+        },
+        "masonite-dot": {
+            "hashes": [
+                "sha256:8d0739c0e5912b49111443ca6c3bbb613e14a2ceafa10f78f27f22a114379482"
+            ],
+            "version": "==0.0.4"
+        },
+        "masonite-events": {
+            "hashes": [
+                "sha256:dd7ab58a8e107a76b735235de4d0f636d470cf419a4ea122cc3a605ccf7d1222"
+            ],
+            "version": "==1.0.1"
+        },
+        "masonite-scheduler": {
+            "hashes": [
+                "sha256:3d274bf92bd524d4391a9e5d3113a42019a12cd14b9f5c6a85b75a11d8343b5c"
+            ],
+            "version": "==1.0.2"
+        },
+        "masonite-validation": {
+            "hashes": [
+                "sha256:6764d74f6936a3e7d55508ca092ef63b042133de4f8e6379117a20c7544bb721"
+            ],
+            "version": "==2.2.10"
         },
         "more-itertools": {
             "hashes": [

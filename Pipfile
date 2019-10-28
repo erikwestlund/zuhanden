@@ -10,7 +10,6 @@ masonite-cli = "*"
 psycopg2-binary = "*"
 libsass = "*"
 masonite = "*"
-black = "*"
 pre-commit = "*"
 
 [requires]
