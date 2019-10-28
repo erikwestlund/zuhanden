@@ -15,9 +15,13 @@ class ViewComposerProvider(ServiceProvider):
         pass
 
     def boot(self, view: View, request: Request):
+        state = self.get_app_state(request)
+        view.share({'state': state})
+
+    def get_app_state(self, request):
         state = {
             "user": {
                 "loggedIn": True if request.user else False
             }
         }
-        view.share({'state': state})
+        return state

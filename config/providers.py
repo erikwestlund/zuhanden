@@ -10,7 +10,7 @@ from masonite.validation.providers.ValidationProvider import ValidationProvider
 
 from app.providers.CommandsProvider import CommandsProvider
 from app.providers.CustomHelpersProvider import CustomHelpersProvider
-from app.providers.ViewComposerProvider import ViewComposerProvider
+from app.providers.AppStateProvider import ViewComposerProvider
 
 """Providers List
 Providers are a simple way to remove or add functionality for Masonite

@@ -44,6 +44,7 @@ class RegisterController:
 
         errors = request.validate(
             validate.required(['name', 'email', 'password']),
+            validate.email('email'),
             validate.confirmed('password')
         )
 

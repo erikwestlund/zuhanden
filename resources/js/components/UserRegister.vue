@@ -18,7 +18,7 @@
                     :class="{'border border-red-500' : form.errors.has('name')}"
                     id="grid-name"
                     type="text"
-                    placeholder="Jane"
+                    placeholder="Your Name"
                     v-model="form.name"
                 >
                 <p class="text-gray-600 italic">This is how we'll publicly display your name</p>
@@ -102,11 +102,9 @@
 
 <script>
     import Form from '../modules/Form.js'
-    import MixinCsrf from "./MixinCsrf";
 
     export default {
         name: 'UserRegister',
-        mixins: [MixinCsrf],
         data() {
             return {
                 submitting: false,
