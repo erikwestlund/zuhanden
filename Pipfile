@@ -11,6 +11,7 @@ psycopg2-binary = "*"
 libsass = "*"
 masonite = "*"
 black = "*"
+pre-commit = "*"
 
 [requires]
 python_version = "3.7"

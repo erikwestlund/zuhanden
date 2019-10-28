@@ -11,4 +11,3 @@ export default class {
         this.vue.$on(event, callback)
     }
 }
-
