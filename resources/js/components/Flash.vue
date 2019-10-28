@@ -14,6 +14,7 @@
 <script>
 export default {
     name: 'Flash',
+
     props: {
         initialMessage: {
             required: true,
@@ -38,24 +39,28 @@ export default {
             show: false
         }
     },
+
     created () {
         Event.listen('flash', data => this.flash(data))
     },
+
     mounted () {
         this.$nextTick(function () {
             if (this.initialMessage) {
                 this.flash({
                     message: this.initialMessage,
                     level: this.initialLevel,
-                    duration: this.initialDuration })
+                    duration: this.initialDuration
+                })
             }
         })
     },
+
     methods: {
         flash (data) {
             this.message = data.message || this.message
             this.level = data.level || this.level
-            let duration = data.duration || this.duration
+            const duration = data.duration || this.duration
             this.show = true
 
             this.hide(duration)

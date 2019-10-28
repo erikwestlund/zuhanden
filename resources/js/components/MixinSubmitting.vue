@@ -3,6 +3,7 @@ import ButtonSubmittingLabel from './ButtonSubmittingLabel'
 
 export default {
     components: { ButtonSubmittingLabel },
+
     data () {
         return {
             deleting: false,
@@ -16,11 +17,13 @@ export default {
             timerDelay: 250
         }
     },
+
     computed: {
         submitting () {
             return this[this.submittingType]
         }
     },
+
     methods: {
         turnOnSubmitting () {
             this[this.submittingType] = true

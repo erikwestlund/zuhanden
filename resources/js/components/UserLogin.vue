@@ -97,12 +97,14 @@ import MixinSubmitting from './MixinSubmitting'
 
 export default {
     mixins: [MixinSubmitting],
+
     props: {
         next: {
             type: String,
             default: null
         }
     },
+
     data () {
         return {
             submittingType: 'logging_in',
@@ -114,6 +116,7 @@ export default {
             })
         }
     },
+
     methods: {
         onSubmit () {
             this.turnOnSubmitting()

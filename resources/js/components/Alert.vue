@@ -28,6 +28,7 @@
 <script>
 export default {
     name: 'Alert',
+
     props: {
         category: {
             type: String,
@@ -50,14 +51,17 @@ export default {
             default: true
         }
     },
+
     data () {
         return {
             show: this.initShow
         }
     },
+
     created () {
         Event.listen('hideAlert', () => this.hide())
     },
+
     mounted () {
         this.$nextTick(() => {
             if (this.temporary) {
@@ -68,6 +72,7 @@ export default {
             }
         })
     },
+
     methods: {
         hide () {
             this.show = false

@@ -78,12 +78,15 @@ export default {
             default: false
         }
     },
+
     created () {
         document.addEventListener('keyup', this.escapeKeyListener)
     },
+
     destroyed () {
         document.removeEventListener('keyup', this.escapeKeyListener)
     },
+
     methods: {
         escapeKeyListener (event) {
             if (event.keyCode === 27) {

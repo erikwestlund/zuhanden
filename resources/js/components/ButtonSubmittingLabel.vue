@@ -20,6 +20,7 @@ export default {
             default: 'submitting'
         }
     },
+
     computed: {
         submittingText () {
             if (this.type === 'saving') {

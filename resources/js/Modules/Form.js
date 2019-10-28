@@ -121,7 +121,7 @@ export default class Form {
      * @param {object} errors
      */
     onFail (errors) {
-        if (errors.hasOwnProperty('errors')) {
+        if (Object.prototype.hasOwnProperty.call(errors, 'errors')) {
             this.errors.record(errors.errors)
         }
     }

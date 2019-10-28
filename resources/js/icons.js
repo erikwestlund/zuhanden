@@ -1,4 +1,4 @@
-import {library} from '@fortawesome/fontawesome-svg-core'
+import { library } from '@fortawesome/fontawesome-svg-core'
 
 import {
     faAngleDoubleLeft,
@@ -55,9 +55,9 @@ import {
     faUniversity as fasUniversity
 } from '@fortawesome/pro-solid-svg-icons'
 
-import {FontAwesomeIcon, FontAwesomeLayers} from '@fortawesome/vue-fontawesome'
+import { FontAwesomeIcon, FontAwesomeLayers } from '@fortawesome/vue-fontawesome'
 
-import {faGithub, faTwitter} from '@fortawesome/free-brands-svg-icons'
+import { faGithub, faTwitter } from '@fortawesome/free-brands-svg-icons'
 
 library.add(
     faAngleDoubleLeft,
