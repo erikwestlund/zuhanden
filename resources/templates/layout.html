@@ -24,9 +24,12 @@
 
 <div id="app">
 
-
 <header>
-    <navigation-bar :logged-in="{{ 1 if state.user.loggedIn else 0 }}"></navigation-bar>
+    <navigation-bar
+            :show-user-actions="{{ "false" if hide_user_actions else "true" }}"
+    >
+
+    </navigation-bar>
 </header>
 
 <div class="container mx-auto p-6">

@@ -6,8 +6,8 @@ ROUTES = [Get("/", "IndexController@show").name("index")]
 
 ROUTES = ROUTES + [
     Get().route("/login", "LoginController@show").name("login"),
+    Post().route("/login", "LoginController@login"),
     Get().route("/logout", "LoginController@logout").name("logout"),
-    Post().route("/login", "LoginController@store"),
     Get().route("/register", "RegisterController@show").name("register"),
     Post().route("/register", "RegisterController@store"),
     Get().route("/email/verify", "ConfirmController@verify_show").name("verify"),

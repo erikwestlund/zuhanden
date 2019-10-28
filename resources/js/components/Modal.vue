@@ -7,7 +7,7 @@
         >
             <div class="modal-wrapper">
                 <div
-                    class="modal-container"
+                    class="modal-container bg-white my-8 mx-auto p-6 rounded-lg shadow-lg"
                     :class="{'lg': large, 'sm':small}"
                     @click.stop
                 >
@@ -32,7 +32,7 @@
                         </div>
                         <div class="w-1/4 text-right">
                             <button
-                                class="btn btn-grey hover:bg-grey hover:border-grey"
+                                class="btn btn-gray hover:bg-gray hover:border-gray"
                                 @click="$emit('close')"
                             >
                                 <fa-icon
@@ -117,11 +117,6 @@ export default {
 
     .modal-container {
         width: 500px;
-        margin: 2rem auto;
-        padding: 20px 30px;
-        background-color: #fff;
-        border-radius: 2px;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
         transition: all .3s ease;
     }
 

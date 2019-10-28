@@ -30,7 +30,7 @@ class RegisterController:
             request.session.flash("warning", "You are already logged in.")
             return request.redirect("/")
 
-        return view.render("users/register")
+        return view.render("users/register", {"hide_user_actions": True})
 
     def store(
         self,
@@ -55,8 +55,7 @@ class RegisterController:
         )
 
         if errors:
-            request.status(422)
-            return {"errors": errors}
+            return error_response(errors)
         else:
             user = auth.register(
                 {
@@ -75,4 +74,4 @@ class RegisterController:
                     "success",
                     "Your account has been created and you have been logged in!",
                 )
-                return request.redirect("/")
+                return success_response({"email": user.email})

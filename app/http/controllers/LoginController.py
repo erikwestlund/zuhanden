@@ -13,44 +13,26 @@ class LoginController:
         pass
 
     def show(self, request: Request, view: View, auth: Auth):
-        """Show the login page.
-
-        Arguments:
-            request {masonite.request.Request} -- The Masonite request class.
-            view {masonite.view.View} -- The Masonite view class.
-            auth {masonite.auth.auth} -- The Masonite auth class.
-
-        Returns:
-            masonite.view.View -- Returns the Masonite view class.
-        """
         if request.user():
+            request.session.flash("warning", "You are already logged in.")
             return request.redirect("/")
-        return view.render("users/login")
+        return view.render("users/login", {"hide_user_actions": True})
 
-    def store(self, request: Request, auth: Auth):
-        """Login the user.
+    def login(self, request: Request, auth: Auth):
+        user = auth.login(request.input("email"), request.input("password"))
 
-        Arguments:
-            request {masonite.request.Request} -- The Masonite request class.
-            auth {masonite.auth.auth} -- The Masonite auth class.
+        if user:
+            return success_response({"email": user.email})
 
-        Returns:
-            masonite.request.Request -- The Masonite request class.
-        """
-        if auth.login(request.input("email"), request.input("password")):
-            return request.redirect("/home")
-
-        return request.redirect("/login")
+        return error_response(
+            {"password": ["We could not validate these credentials. Please try again."]}
+        )
 
     def logout(self, request: Request, auth: Auth):
-        """Log out the user.
+        if not request.user():
+            request.session.flash("warning", "You are already logged out.")
+            return request.redirect("/")
 
-        Arguments:
-            request {masonite.request.Request} -- The Masonite request class.
-            auth {masonite.auth.auth} -- The Masonite auth class.
-
-        Returns:
-            masonite.request.Request -- The Masonite request class.
-        """
         auth.logout()
-        return request.redirect("/login")
+        request.session.flash("success", "You have been logged out.")
+        return request.redirect("/")

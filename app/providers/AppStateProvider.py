@@ -6,10 +6,10 @@ from masonite.request import Request
 from masonite.view import View
 
 
-class ViewComposerProvider(ServiceProvider):
+class AppStateProvider(ServiceProvider):
     """Provides App State To The Service Container."""
 
-    wsgi = False
+    wsgi = True
 
     def register(self):
         pass
@@ -19,5 +19,5 @@ class ViewComposerProvider(ServiceProvider):
         view.share({"state": state})
 
     def get_app_state(self, request):
-        state = {"user": {"loggedIn": True if request.user else False}}
+        state = {"user": {"loggedIn": True if request.user() else False}}
         return state

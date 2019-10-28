@@ -3,6 +3,7 @@ import Event from './modules/Event'
 import Alert from './components/Alert'
 import Flash from './components/Flash'
 import NavigationBar from './components/NavigationBar'
+import UserLogin from './components/UserLogin'
 import UserRegister from './components/UserRegister'
 
 require('./bootstrap')
@@ -24,6 +25,7 @@ const app = new Vue({
         Alert,
         Flash,
         NavigationBar,
+        UserLogin,
         UserRegister
     }
 })
