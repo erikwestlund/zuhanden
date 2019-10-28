@@ -6,6 +6,7 @@ from masonite.view import View
 
 from app.helpers.mix import mix
 
+
 class CustomHelpersProvider(ServiceProvider):
     """Provides Services To The Service Container."""
 
@@ -17,8 +18,4 @@ class CustomHelpersProvider(ServiceProvider):
 
     def boot(self, view: View):
         """Add custom helper functions to Masonite."""
-        view.share(
-            {
-                'mix': mix,
-            }
-        )
+        view.share({"mix": mix})

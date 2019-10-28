@@ -27,12 +27,18 @@ class RegisterController:
         """
 
         if auth():
-            request.session.flash('warning', 'You are already logged in.')
-            return request.redirect('/')
+            request.session.flash("warning", "You are already logged in.")
+            return request.redirect("/")
 
-        return view.render('users/register')
+        return view.render("users/register")
 
-    def store(self, request: Request, mail_manager: MailManager, auth: Auth, validate: Validator):
+    def store(
+        self,
+        request: Request,
+        mail_manager: MailManager,
+        auth: Auth,
+        validate: Validator,
+    ):
         """Register the user with the database.
 
         Arguments:
@@ -43,25 +49,30 @@ class RegisterController:
         """
 
         errors = request.validate(
-            validate.required(['name', 'email', 'password']),
-            validate.email('email'),
-            validate.confirmed('password')
+            validate.required(["name", "email", "password"]),
+            validate.email("email"),
+            validate.confirmed("password"),
         )
 
         if errors:
             request.status(422)
-            return {'errors': errors}
+            return {"errors": errors}
         else:
-            user = auth.register({
-                'name': request.input('name'),
-                'password': request.input('password'),
-                'email': request.input('email'),
-            })
+            user = auth.register(
+                {
+                    "name": request.input("name"),
+                    "password": request.input("password"),
+                    "email": request.input("email"),
+                }
+            )
 
             if isinstance(user, MustVerifyEmail):
                 user.verify_email(mail_manager, request)
 
             # Login the user
-            if auth.login(request.input('email'), request.input('password')):
-                request.session.flash('success', 'Your account has been created and you have been logged in!')
-                return request.redirect('/')
+            if auth.login(request.input("email"), request.input("password")):
+                request.session.flash(
+                    "success",
+                    "Your account has been created and you have been logged in!",
+                )
+                return request.redirect("/")

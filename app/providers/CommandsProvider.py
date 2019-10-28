@@ -11,7 +11,7 @@ class CommandsProvider(ServiceProvider):
     wsgi = False
 
     def register(self):
-        self.app.bind('SeedAdminCommand', SeedAdminCommand)
+        self.app.bind("SeedAdminCommand", SeedAdminCommand)
 
     def boot(self):
         pass

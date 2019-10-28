@@ -10,6 +10,7 @@ masonite-cli = "*"
 psycopg2-binary = "*"
 libsass = "*"
 masonite = "*"
+black = "*"
 
 [requires]
 python_version = "3.7"

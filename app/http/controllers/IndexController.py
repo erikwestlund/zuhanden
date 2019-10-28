@@ -12,4 +12,4 @@ class IndexController:
         pass
 
     def show(self, request: Request, view: View):
-        return view.render('index')
+        return view.render("index")

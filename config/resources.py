@@ -7,6 +7,5 @@ import os
 Define where CSS files are located.
 """
 
-PATH = os.getcwd() + '/resources'
-PUBLIC_PATH = os.getcwd() + '/storage/static'
-
+PATH = os.getcwd() + "/resources"
+PUBLIC_PATH = os.getcwd() + "/storage/static"

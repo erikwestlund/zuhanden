@@ -24,8 +24,8 @@ class LoginController:
             masonite.view.View -- Returns the Masonite view class.
         """
         if request.user():
-            return request.redirect('/')
-        return view.render('users/login')
+            return request.redirect("/")
+        return view.render("users/login")
 
     def store(self, request: Request, auth: Auth):
         """Login the user.
@@ -37,10 +37,10 @@ class LoginController:
         Returns:
             masonite.request.Request -- The Masonite request class.
         """
-        if auth.login(request.input('email'), request.input('password')):
-            return request.redirect('/home')
+        if auth.login(request.input("email"), request.input("password")):
+            return request.redirect("/home")
 
-        return request.redirect('/login')
+        return request.redirect("/login")
 
     def logout(self, request: Request, auth: Auth):
         """Log out the user.
@@ -53,4 +53,4 @@ class LoginController:
             masonite.request.Request -- The Masonite request class.
         """
         auth.logout()
-        return request.redirect('/login')
+        return request.redirect("/login")

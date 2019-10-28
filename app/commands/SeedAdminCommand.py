@@ -5,6 +5,7 @@ import pendulum
 from app.User import User
 from masonite.helpers import password as hash_bcrypt
 
+
 class SeedAdminCommand(Command):
     """
     Seeds the administrator user.
@@ -13,11 +14,11 @@ class SeedAdminCommand(Command):
     """
 
     def handle(self):
-        self.line('<info>Add an administrator to the database.</info>')
+        self.line("<info>Add an administrator to the database.</info>")
 
-        email = self.ask('What is your email?')
-        name = self.ask('What is your name?')
-        password = self.secret('Provide a password.')
+        email = self.ask("What is your email?")
+        name = self.ask("What is your name?")
+        password = self.secret("Provide a password.")
 
         errors = self.validate_input(email, name, password)
 
@@ -28,9 +29,9 @@ class SeedAdminCommand(Command):
                 email=email,
                 name=name,
                 password=hash_bcrypt(password),
-                verified_at=pendulum.now()
+                verified_at=pendulum.now(),
             )
-            self.line('<info>User generated successfully.</info>')
+            self.line("<info>User generated successfully.</info>")
 
     def print_errors(self, errors):
         for error in errors:
@@ -39,20 +40,17 @@ class SeedAdminCommand(Command):
 
     def validate_input(self, email, name, password):
         from wsgi import container
-        validator = container.make('Validator')
-        errors = validator.validate({
-            'email': email or '',
-            'name': name or '',
-            'password': password or ''
-        },
-            validator.required(['email', 'name', 'password']),
-            validator.email(['email']),
+
+        validator = container.make("Validator")
+        errors = validator.validate(
+            {"email": email or "", "name": name or "", "password": password or ""},
+            validator.required(["email", "name", "password"]),
+            validator.email(["email"]),
         )
 
-        users_with_email = User.where('email', email).count()
+        users_with_email = User.where("email", email).count()
 
-        if(users_with_email >= 1):
-            errors.update({'email_exists': ['This email already exists in database']})
+        if users_with_email >= 1:
+            errors.update({"email_exists": ["This email already exists in database"]})
 
         return errors
-
