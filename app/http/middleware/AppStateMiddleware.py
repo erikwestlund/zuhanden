@@ -1,4 +1,5 @@
 """AppStateFactory Middleware."""
+import json
 
 from masonite.request import Request
 from masonite.view import View
@@ -26,4 +27,4 @@ class AppStateMiddleware:
                 "loggedIn": True if user else False,
             }
         }
-        return state
+        return json.dumps(state)

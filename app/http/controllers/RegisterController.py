@@ -74,4 +74,4 @@ class RegisterController:
                     "success",
                     "Your account has been created and you have been logged in!",
                 )
-                return success_response({"email": user.email})
+                return success_response({"email": request.input("email")})
