@@ -9,8 +9,6 @@ from masonite.view import View
 class AppStateProvider(ServiceProvider):
     """Provides App State To The Service Container."""
 
-    wsgi = True
-
     def register(self):
         pass
 
@@ -19,5 +17,12 @@ class AppStateProvider(ServiceProvider):
         view.share({"state": state})
 
     def get_app_state(self, request):
-        state = {"user": {"loggedIn": True if request.user() else False}}
-        return state
+        user = request.user()
+        state = {
+            "user": {
+                "name": user.name if user else None,
+                "loggedIn": True if user else False,
+            }
+        }
+
+        return json.dumps(state) if state else {}

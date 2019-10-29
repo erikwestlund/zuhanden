@@ -1,9 +1,9 @@
 <template>
-    <nav class="flex items-center justify-between flex-wrap bg-blue-900 py-3 px-3 md:px-12">
+    <nav class="flex items-center justify-between flex-wrap bg-blue-900 py-3 px-3 md:px-12 shadow-lg">
         <div class="flex items-center flex-shrink-0 text-white mr-12">
             <span class="font-semibold text-4xl">
                 <fa-icon
-                    class="mr-1"
+                    class="mr-1 text-blue-400"
                     :icon="['fas', 'hammer']"
                 /> Zuhanden
             </span>
@@ -60,7 +60,7 @@
                     Sign In
                 </a>
                 <span class="text-white mr-8" v-if="loggedIn">
-                    <fa-icon class="mr-1" :icon="['fas', 'user-circle']" />
+                    <fa-icon class="mr-1" :icon="['fas', 'user-circle']"/>
 
                     <span v-if="userName">
                         {{ user.name }}
@@ -80,6 +80,7 @@
             </div>
         </div>
         <modal
+            v-if="showUserActions"
             small
             :show="showLoginModal"
             done-text="Close"
@@ -122,10 +123,10 @@
         name: 'NavigationBar',
 
         props: {
-          showUserActions: {
-              default: true,
-              type: Boolean
-          }
+            showUserActions: {
+                default: true,
+                type: Boolean
+            }
         },
 
         components: {

@@ -14,10 +14,8 @@ from config.auth import AUTH
 class PasswordController:
     """Password Controller."""
 
-    def forget(self, view: View, request: Request, auth: Auth):
-        return view.render(
-            "auth/forget", {"app": request.app().make("Application"), "Auth": auth}
-        )
+    def reset_form(self, view: View):
+        return view.render("users/reset-password")
 
     def reset(self, request: Request, auth: Auth):
         token = request.param("token")

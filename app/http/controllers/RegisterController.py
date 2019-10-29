@@ -5,9 +5,10 @@ from config import application, auth as auth_config
 from masonite.auth import Auth
 from masonite.request import Request
 from masonite.view import View
-from masonite.auth import MustVerifyEmail
+from app.auth.MustVerifyEmail import MustVerifyEmail
 from masonite.managers import MailManager
 
+from app.User import User
 
 class RegisterController:
     """The RegisterController class."""
@@ -57,7 +58,7 @@ class RegisterController:
         if errors:
             return error_response(errors)
         else:
-            user = auth.register(
+            auth.register(
                 {
                     "name": request.input("name"),
                     "password": request.input("password"),
@@ -65,13 +66,15 @@ class RegisterController:
                 }
             )
 
+            user = User.where('email', request.input("email")).first()
+
             if isinstance(user, MustVerifyEmail):
                 user.verify_email(mail_manager, request)
 
             # Login the user
-            if auth.login(request.input("email"), request.input("password")):
+            if auth.login(user.email, request.input("password")):
                 request.session.flash(
                     "success",
                     "Your account has been created and you have been logged in!",
                 )
-                return success_response({"email": request.input("email")})
+                return success_response({"email": user.email})

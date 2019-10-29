@@ -13,10 +13,12 @@ ROUTES = ROUTES + [
     Get().route("/email/verify", "ConfirmController@verify_show").name("verify"),
     Get().route("/email/verify/send", "ConfirmController@send_verify_email"),
     Get().route("/email/verify/@id:signed", "ConfirmController@confirm_email"),
-    Get().route("/password", "PasswordController@forget").name("forgot.password"),
-    Post().route("/password", "PasswordController@send"),
     Get()
-    .route("/password/@token/reset", "PasswordController@reset")
+    .route("/users/reset-password", "PasswordController@reset_form")
+    .name("forgot.password"),
+    Post().route("/users/reset-password", "PasswordController@send"),
+    Get()
+    .route("/users/reset-password/@token", "PasswordController@reset")
     .name("password.reset"),
-    Post().route("/password/@token/reset", "PasswordController@update"),
+    Post().route("/users/reset-password/@token", "PasswordController@update"),
 ]

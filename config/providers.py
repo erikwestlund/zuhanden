@@ -51,4 +51,5 @@ PROVIDERS = [
     # Application Providers
     CommandsProvider,
     CustomHelpersProvider,
+    AppStateProvider,
 ]
