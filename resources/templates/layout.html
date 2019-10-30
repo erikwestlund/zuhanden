@@ -16,7 +16,7 @@
 
 <meta name="csrf-token" content="{{ csrf_token }}">
 <script>
-    window.State = {{ state | safe }}
+    window.State = {{ state | tojson | safe }}
 </script>
 </head>
 <body class="pb-12 border-t-4 border-blue-400 bg-gray-100">

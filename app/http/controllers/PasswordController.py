@@ -15,7 +15,7 @@ class PasswordController:
     """Password Controller."""
 
     def reset_form(self, view: View):
-        return view.render("users/reset-password")
+        return view.render("auth/password-reset-email")
 
     def reset(self, request: Request, auth: Auth):
         token = request.param("token")

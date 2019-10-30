@@ -5,7 +5,7 @@ from config import application, auth as auth_config
 from masonite.auth import Auth
 from masonite.request import Request
 from masonite.view import View
-from app.auth.MustVerifyEmail import MustVerifyEmail
+from masonite.auth import MustVerifyEmail
 from masonite.managers import MailManager
 
 from app.User import User
@@ -31,7 +31,7 @@ class RegisterController:
             request.session.flash("warning", "You are already logged in.")
             return request.redirect("/")
 
-        return view.render("users/register", {"hide_user_actions": True})
+        return view.render("auth/register", {"hide_user_actions": True})
 
     def store(
         self,

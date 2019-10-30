@@ -4,6 +4,8 @@ from masonite.auth import Auth
 from masonite.request import Request
 from masonite.view import View
 
+from app.state import AppState
+
 
 class IndexController:
     """Home Dashboard Controller."""
@@ -12,4 +14,5 @@ class IndexController:
         pass
 
     def show(self, request: Request, view: View):
+        state = AppState()
         return view.render("index")

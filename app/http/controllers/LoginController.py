@@ -16,7 +16,7 @@ class LoginController:
         if request.user():
             request.session.flash("warning", "You are already logged in.")
             return request.redirect("/")
-        return view.render("users/login", {"hide_user_actions": True})
+        return view.render("auth/login", {"hide_user_actions": True})
 
     def login(self, request: Request, auth: Auth):
         user = auth.login(request.input("email"), request.input("password"))

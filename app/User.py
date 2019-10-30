@@ -1,5 +1,5 @@
 """User Model."""
-from app.auth.MustVerifyEmail import MustVerifyEmail
+from masonite.auth import MustVerifyEmail
 
 from config.database import Model
 
