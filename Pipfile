@@ -10,7 +10,7 @@ masonite-cli = "*"
 psycopg2-binary = "*"
 libsass = "*"
 pre-commit = "*"
-masonite = {file = "https://github.com/masoniteframework/core/archive/fix/ajax-user.zip"}
+masonite = "*"
 
 [requires]
 python_version = "3.7"

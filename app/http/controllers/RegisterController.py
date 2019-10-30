@@ -68,13 +68,13 @@ class RegisterController:
 
             user = User.where('email', request.input("email")).first()
 
-            if isinstance(user, MustVerifyEmail):
-                user.verify_email(mail_manager, request)
-
-            # Login the user
-            if auth.login(user.email, request.input("password")):
-                request.session.flash(
-                    "success",
-                    "Your account has been created and you have been logged in!",
-                )
-                return success_response({"email": user.email})
+            # if isinstance(user, MustVerifyEmail):
+            #     user.verify_email(mail_manager, request)
+            #
+            # # Login the user
+            # if auth.login(user.email, request.input("password")):
+            #     request.session.flash(
+            #         "success",
+            #         "Your account has been created and you have been logged in!",
+            #     )
+            #     return success_response({"email": user.email})
