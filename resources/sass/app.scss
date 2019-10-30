@@ -1,13 +1,33 @@
 @tailwind base;
 @tailwind components;
 
+@import 'colors';
 @import 'transitions';
 @import 'buttons';
 @import 'alerts';
 
 body {
-  font-family: 'Source Sans Pro', sans-serif;
-  color: #462a16;
+    font-family: 'Source Sans Pro', sans-serif;
+    color: $gray-900;
+    @apply text-lg;
+}
+
+a {
+    color: $blue-500;
+    text-decoration: none;
+}
+
+a:hover {
+    color: $blue-600;
+    text-decoration: none;
+}
+
+p {
+    @apply mt-5;
+}
+
+blockquote {
+    @apply px-4 mt-8 border-l-2 border-gray-300 text-gray-900;
 }
 
 @tailwind utilities;

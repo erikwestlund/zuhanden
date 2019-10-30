@@ -33,10 +33,8 @@ PROVIDERS = [
     # Framework Providers
     AppProvider,
     SessionProvider,
-
     # Get App State
-    # AppStateProvider,
-
+    AppStateProvider,
     # More Framework Providers
     RouteProvider,
     StatusCodeProvider,

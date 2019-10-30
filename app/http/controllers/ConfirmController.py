@@ -1,46 +1,26 @@
-"""The ConfirmController Module."""
 import datetime
 
-from masonite.auth import Auth, MustVerifyEmail
+from masonite.auth import Auth
 from masonite.auth.Sign import Sign
 from masonite.managers import MailManager
 from masonite.request import Request
 from masonite.view import View
 
+from app.auth.MustVerifyEmail import MustVerifyEmail
+
 
 class ConfirmController:
-    """The ConfirmController class."""
+    def verify_show(self, request: Request, view: View):
 
-    def __init__(self):
-        """The ConfirmController Constructor."""
-        pass
+        if not request.user():
+            request.session.flash(
+                "warning", "You must be logged in verify your email address."
+            )
+            return request.redirect("/login")
 
-    def verify_show(self, request: Request, view: View, auth: Auth):
-        """Show the Verify Email page for unverified users.
-
-        Arguments:
-            request {masonite.request.request} -- The Masonite request class.
-            request {masonite.view.view} -- The Masonite view class.
-            request {masonite.auth.auth} -- The Masonite Auth class.
-
-        Returns:
-            [type] -- [description]
-        """
-        return view.render(
-            "auth/verify", {"app": request.app().make("Application"), "Auth": auth}
-        )
+        return view.render("users/email-verification")
 
     def confirm_email(self, request: Request, view: View, auth: Auth):
-        """Confirm User email and show the correct response.
-
-        Arguments:
-            request {masonite.request.request} -- The Masonite request class.
-            request {masonite.view.view} -- The Masonite view class.
-            request {masonite.auth.auth} -- The Masonite Auth class.
-
-        Returns:
-            [type] -- [description]
-        """
         sign = Sign()
         token = sign.unsign(request.param("id"))
 
@@ -58,14 +38,9 @@ class ConfirmController:
                         user.verified_at = datetime.datetime.now()
                         user.save()
 
-                        return view.render(
-                            "auth/confirm",
-                            {"app": request.app().make("Application"), "Auth": auth},
-                        )
+                        return view.render("users/email-verification-success")
 
-        return view.render(
-            "auth/error", {"app": request.app().make("Application"), "Auth": auth}
-        )
+        return view.render("users/email-verification-error")
 
     def send_verify_email(self, manager: MailManager, request: Request):
         user = request.user()
@@ -73,4 +48,5 @@ class ConfirmController:
         if isinstance(user, MustVerifyEmail):
             user.verify_email(manager, request)
 
-        return request.redirect("/home")
+        request.session.flash("success", "A verification email has been sent.")
+        return request.redirect("/")

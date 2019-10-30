@@ -15,14 +15,14 @@ class PasswordController:
     """Password Controller."""
 
     def reset_form(self, view: View):
-        return view.render("auth/password-reset-email")
+        return view.render("users/password-reset-email")
 
     def reset(self, request: Request, auth: Auth):
         token = request.param("token")
         user = AUTH["model"].where("remember_token", token).first()
         if user:
             return view(
-                "auth/reset",
+                "users/reset",
                 {
                     "token": token,
                     "app": request.app().make("Application"),

@@ -12,7 +12,7 @@ class LoadUserMiddleware:
 
         Arguments:
             request {masonite.request.Request} -- The Masonite request object.
-            auth {masonite.auth.Auth} -- The Masonite authentication object.
+            users {masonite.users.Auth} -- The Masonite authentication object.
         """
         self.request = request
         self.auth = auth

@@ -26,4 +26,4 @@ be the alias to use on routes and the value can be any middleware class or a lis
 of middleware (middleware stacks).
 """
 
-ROUTE_MIDDLEWARE = {"auth": AuthenticationMiddleware, "verified": VerifyEmailMiddleware}
+ROUTE_MIDDLEWARE = {"users": AuthenticationMiddleware, "verified": VerifyEmailMiddleware}
