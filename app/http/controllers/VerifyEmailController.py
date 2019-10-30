@@ -9,7 +9,7 @@ from masonite.view import View
 from app.auth.MustVerifyEmail import MustVerifyEmail
 
 
-class ConfirmController:
+class VerifyEmailController:
     def verify_show(self, request: Request, view: View):
 
         if not request.user():
