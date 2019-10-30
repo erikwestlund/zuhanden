@@ -6,8 +6,10 @@
     <alert category="warning" important>
         {{ session().get('warning') }}
     </alert>
-{% elif session().has('danger') %}
+{% elif session().has('error') %}
     <alert category="danger" important>
-        {{ session().get('danger') }}
+        {% with error = session().get('error') %}
+            {% include "_error-list.html" %}
+        {% endwith %}
     </alert>
 {% endif %}

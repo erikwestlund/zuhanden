@@ -1,3 +1,4 @@
+from masonite.helpers import config
 from masonite.validation import Validator
 
 from app.auth.MustVerifyEmail import MustVerifyEmail
@@ -31,6 +32,11 @@ class RegisterController:
             validate.required(["name", "email", "password"]),
             validate.email("email"),
             validate.confirmed("password"),
+            validate.length(
+                "password",
+                min=config("auth.password_min_length"),
+                max=config("auth.password_max_length"),
+            ),
         )
 
         if errors:

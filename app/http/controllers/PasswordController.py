@@ -4,8 +4,9 @@ import uuid
 
 from masonite import env, Mail, Session
 from masonite.auth import Auth
-from masonite.helpers import password as bcrypt_password
+from masonite.helpers import password as bcrypt_password, config
 from masonite.request import Request
+from masonite.validation import Validator
 from masonite.view import View
 
 from config.auth import AUTH
@@ -14,15 +15,17 @@ from config.auth import AUTH
 class PasswordController:
     """Password Controller."""
 
+    reset_message = "We have sent directions on how to reset your password to the provided email. If you do not receive an email, try again."
+
     def reset_form(self, view: View):
-        return view.render("users/password-reset-email")
+        return view.render("users/password-reset-request")
 
     def reset(self, request: Request, auth: Auth):
         token = request.param("token")
         user = AUTH["model"].where("remember_token", token).first()
         if user:
             return view(
-                "users/reset",
+                "users/password-reset",
                 {
                     "token": token,
                     "app": request.app().make("Application"),
@@ -30,7 +33,14 @@ class PasswordController:
                 },
             )
 
-    def send(self, request: Request, session: Session, mail: Mail):
+    def send(self, request: Request, session: Session, mail: Mail, validate: Validator):
+
+        errors = request.validate(validate.required("email"), validate.email("email"),)
+
+        if errors:
+            request.session.flash("error", errors)
+            return request.back()
+
         email = request.input("email")
         user = AUTH["model"].where("email", email).first()
 
@@ -38,24 +48,49 @@ class PasswordController:
             if not user.remember_token:
                 user.remember_token = str(uuid.uuid4())
                 user.save()
-            message = "Please visit {}/password/{}/reset to reset your password".format(
-                env("SITE", "http://localhost:8000"), user.remember_token
-            )
-            mail.subject("Reset Password Instructions").to(email).send(message)
-            session.flash(
-                "success",
-                "Email sent. Follow the instruction in the email to reset your password.",
-            )
-            return request.redirect("/password")
-        else:
-            session.flash(
-                "error", "Could not send reset email. Please enter correct email."
-            )
-            return request.redirect("/password")
 
-    def update(self, request: Request):
+            link = "{}/users/reset-password/{}".format(
+                request.environ["HTTP_HOST"], user.remember_token
+            )
+
+            mail.subject(
+                "{}: Reset Your Password".format(config("application.name"))
+            ).template(
+                "users/password-reset-email", {"name": user.name, "link": link},
+            ).to(
+                user.email
+            ).send()
+
+        session.flash("success", self.reset_message)
+
+        return request.redirect("/")
+
+    def update(self, request: Request, validate: Validator):
+
+        errors = request.validate(
+            validate.required("password"),
+            validate.confirmed("password"),
+            validate.length(
+                "password",
+                min=config("auth.password_min_length"),
+                max=config("auth.password_max_length"),
+            ),
+        )
+
+        if errors:
+            request.session.flash("error", errors)
+            return request.back()
+
         user = AUTH["model"].where("remember_token", request.param("token")).first()
         if user:
             user.password = bcrypt_password(request.input("password"))
+            user.remember_token = ""
             user.save()
+
+            if request.user():
+                auth.logout()
+
+            request.session.flash(
+                "success", "Your password has been reset. Login below."
+            )
             return request.redirect("/login")

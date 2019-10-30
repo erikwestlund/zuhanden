@@ -1,0 +1,11 @@
+{% if error is mapping %}
+    <ul>
+    {% for field in error %}
+        {% for problem in error[field] %}
+            <li>{{ problem }}</li>
+        {% endfor %}
+    {% endfor %}
+    </ul>
+{% else %}
+    {{ error }}
+{% endif %}
