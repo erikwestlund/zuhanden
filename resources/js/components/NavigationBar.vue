@@ -1,11 +1,11 @@
 <template>
     <nav class="flex items-center justify-between flex-wrap bg-blue-900 py-3 px-3 md:px-12 shadow-lg">
         <div class="flex items-center flex-shrink-0 text-white mr-12">
-            <span class="font-semibold text-4xl">
+            <span class="font-semibold font-serif text-4xl text-blue-100">
                 <fa-icon
-                    class="mr-1 text-blue-400"
-                    :icon="['fas', 'hammer']"
-                /> Zuhanden
+                    class="mr-4 text-blue-400"
+                    :icon="['fad', 'university']"
+                /> Academic
             </span>
         </div>
         <div class="block md:hidden">
@@ -42,7 +42,7 @@
                 >
                     <fa-icon
                         class="mr-2"
-                        :icon="['fas', 'user-plus']"
+                        :icon="['fad', 'user-plus']"
                     />
                     Sign Up
                 </a>
@@ -55,12 +55,12 @@
                 >
                     <fa-icon
                         class="mr-2"
-                        :icon="['fas', 'sign-in']"
+                        :icon="['fad', 'sign-in']"
                     />
                     Sign In
                 </a>
                 <span class="text-white mr-8" v-if="loggedIn">
-                    <fa-icon class="mr-1" :icon="['fas', 'user-circle']"/>
+                    <fa-icon class="mr-1" :icon="['fad', 'user-circle']"/>
 
                     <span v-if="userName">
                         {{ user.name }}
@@ -73,7 +73,7 @@
                 >
                     <fa-icon
                         class="mr-2"
-                        :icon="['fas', 'sign-out']"
+                        :icon="['fad', 'sign-out']"
                     />
                     Sign Out
                 </a>
@@ -89,7 +89,7 @@
             <h3 slot="header" class="text-2xl text-blue-900">
                 <fa-icon
                     class="mr-2"
-                    :icon="['far', 'sign-in']"
+                    :icon="['fad', 'sign-in']"
                 />
                 Sign In
             </h3>

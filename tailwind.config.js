@@ -1,5 +1,8 @@
 module.exports = {
     theme: {
+        fontFamily: {
+            'serif': ['Merriweather', 'Georgia', 'Cambria', 'Times New Roman', 'Times', 'serif']
+        },
         screens: {
             'sm': '576px',
             // => @media (min-width: 576px) { ... }
