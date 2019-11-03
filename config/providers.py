@@ -18,6 +18,7 @@ from masonite.providers import (
 )
 from masonite.validation.providers.ValidationProvider import ValidationProvider
 
+from app.providers.ModelObserverProvider import ModelObserverProvider
 from app.providers.AppStateProvider import AppStateProvider
 from app.providers.CommandsProvider import CommandsProvider
 from app.providers.CustomHelpersProvider import CustomHelpersProvider
@@ -53,5 +54,6 @@ PROVIDERS = [
     # Third Party Providers
     # Application Providers
     CommandsProvider,
+    ModelObserverProvider,
     CustomHelpersProvider,
 ]

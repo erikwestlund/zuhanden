@@ -2,12 +2,12 @@
 
 from masonite.provider import ServiceProvider
 
-from app import User
+from app.User import User
 from app.model_observers.UserObserver import UserObserver
 
 
 class ModelObserverProvider(ServiceProvider):
-    """Provides Services To The Service Container."""
+    """Register Orator model observers."""
 
     wsgi = False
 
@@ -16,8 +16,4 @@ class ModelObserverProvider(ServiceProvider):
         pass
 
     def boot(self):
-        """Boots services required by the container."""
         User.observe(UserObserver())
-
-
-jmgg;g;/reversed() V,  mx k

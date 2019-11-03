@@ -10,9 +10,13 @@ ROUTES = ROUTES + [
     Get().route("/logout", "LoginController@logout").name("logout"),
     Get().route("/register", "RegisterController@show").name("register"),
     Post().route("/register", "RegisterController@store"),
-    Get().route("/users/verify-email", "VerifyEmailController@verify_show").name("verify"),
+    Get()
+    .route("/users/verify-email", "VerifyEmailController@verify_show")
+    .name("verify"),
     Get().route("/users/verify-email/send", "VerifyEmailController@send_verify_email"),
-    Get().route("/users/verify-email/@id:signed", "VerifyEmailController@confirm_email"),
+    Get().route(
+        "/users/verify-email/@id:signed", "VerifyEmailController@confirm_email"
+    ),
     Get()
     .route("/users/reset-password", "PasswordController@reset_form")
     .name("forgot.password"),

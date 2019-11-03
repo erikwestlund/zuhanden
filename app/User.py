@@ -4,6 +4,7 @@ from app.auth.MustVerifyEmail import MustVerifyEmail
 from config.database import Model
 from orator.orm import has_one
 
+
 class User(Model, MustVerifyEmail):
     """User Model."""
 
