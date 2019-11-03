@@ -84,7 +84,7 @@ class PasswordController:
         user = AUTH["model"].where("remember_token", request.param("token")).first()
         if user:
             user.password = bcrypt_password(request.input("password"))
-            user.remember_token = ""
+            user.remember_token = None
             user.save()
 
             if request.user():

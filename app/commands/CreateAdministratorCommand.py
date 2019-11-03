@@ -2,11 +2,12 @@
 from cleo import Command
 import pendulum
 
+from app.Role import Role
 from app.User import User
 from masonite.helpers import password as hash_bcrypt
 
 
-class SeedAdminCommand(Command):
+class CreateAdministratorCommand(Command):
     """
     Seeds the administrator user.
 
@@ -32,6 +33,8 @@ class SeedAdminCommand(Command):
                 verified_at=pendulum.now(),
             )
             self.line("<info>User generated successfully.</info>")
+
+            user.roles().attach(Role.where('name', 'administrator').first())
 
     def print_errors(self, errors):
         for error in errors:

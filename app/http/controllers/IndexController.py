@@ -4,7 +4,7 @@ from masonite.auth import Auth
 from masonite.request import Request
 from masonite.view import View
 
-from app.state import AppState
+from app.State import AppState
 
 
 class IndexController:

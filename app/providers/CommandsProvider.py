@@ -2,7 +2,7 @@
 
 from masonite.provider import ServiceProvider
 
-from app.commands.SeedAdminCommand import SeedAdminCommand
+from app.commands.CreateAdministratorCommand import CreateAdministratorCommand
 
 
 class CommandsProvider(ServiceProvider):
@@ -11,7 +11,7 @@ class CommandsProvider(ServiceProvider):
     wsgi = False
 
     def register(self):
-        self.app.bind("SeedAdminCommand", SeedAdminCommand)
+        self.app.bind("CreateAdministratorCommand", CreateAdministratorCommand)
 
     def boot(self):
         pass
