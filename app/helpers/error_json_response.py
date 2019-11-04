@@ -1,4 +1,4 @@
-def error_response(errors):
+def error_json_response(errors):
     from wsgi import container
 
     request = container.make("Request")

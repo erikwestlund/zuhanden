@@ -1,4 +1,4 @@
-def success_response(object):
+def success_json_response(object):
     from wsgi import container
 
     request = container.make("Request")
