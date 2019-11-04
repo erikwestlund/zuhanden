@@ -1,6 +1,9 @@
 import { library } from '@fortawesome/fontawesome-svg-core'
 
 import {
+    faBomb,
+    faExclamationCircle,
+    faLock,
     faSignIn,
     faSignOut,
     faUniversity,
@@ -20,7 +23,10 @@ import { FontAwesomeIcon, FontAwesomeLayers } from '@fortawesome/vue-fontawesome
 import { faGithub, faTwitter } from '@fortawesome/free-brands-svg-icons'
 
 library.add(
+    faBomb,
+    faExclamationCircle,
     faGithub,
+    faLock,
     faSignIn,
     faSignOut,
     faUser,

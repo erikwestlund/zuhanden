@@ -1,11 +1,12 @@
 <template>
     <nav class="flex items-center justify-between flex-wrap bg-blue-900 py-3 px-3 md:px-12 shadow-lg">
         <div class="flex items-center flex-shrink-0 text-white mr-12">
-            <span class="font-semibold font-serif text-4xl text-blue-100">
+            <span class="font-semibold font-serif text-4xl">
                 <fa-icon
                     class="mr-4 text-blue-400"
                     :icon="['fad', 'university']"
-                /> Academic
+                />
+                <a href="/" class="text-blue-100 hover:text-blue-100">Academic</a>
             </span>
         </div>
         <div class="block md:hidden">

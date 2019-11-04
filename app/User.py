@@ -15,4 +15,10 @@ class User(Model, MustVerifyEmail):
     @belongs_to_many
     def roles(self):
         from app.Role import Role
+
         return Role
+
+    def can(self, permission):
+        return (
+            permission in self.roles.pluck("permissions").collapse().pluck("name").all()
+        )

@@ -34,7 +34,9 @@ class CreateAdministratorCommand(Command):
             )
             self.line("<info>User generated successfully.</info>")
 
-            user.roles().attach(Role.where('name', 'administrator').first())
+            user.roles().attach(Role.where("name", "administrator").first())
+            user.roles().attach(Role.where("name", "user").first())
+            user.roles().attach(Role.where("name", "premium_user").first())
 
     def print_errors(self, errors):
         for error in errors:

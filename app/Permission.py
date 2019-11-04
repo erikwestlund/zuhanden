@@ -10,4 +10,5 @@ class Permission(Model):
     @belongs_to_many
     def roles(self):
         from app.Role import Role
+
         return Role

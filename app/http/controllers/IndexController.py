@@ -1,10 +1,10 @@
 """The HomeController Module."""
 
-from masonite.auth import Auth
 from masonite.request import Request
 from masonite.view import View
 
-from app.State import AppState
+from app.User import User
+from app.auth.authenticators import user_can
 
 
 class IndexController:
@@ -13,6 +13,6 @@ class IndexController:
     def __init__(self):
         pass
 
-    def show(self, request: Request, view: View):
-        state = AppState()
+
+    def show(self, view: View):
         return view.render("index")

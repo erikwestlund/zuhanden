@@ -79,7 +79,6 @@ class CreatePermissionsRolesPivotTable(Migration):
             ]
         )
 
-
     def down(self):
         """
         Revert the migrations.
