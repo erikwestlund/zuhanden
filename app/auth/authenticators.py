@@ -5,7 +5,6 @@ def user_can(permission):
 
             request = container.make("Request")
 
-
             user = request.user()
 
             if not user:

@@ -13,6 +13,5 @@ class IndexController:
     def __init__(self):
         pass
 
-
     def show(self, view: View):
         return view.render("index")
