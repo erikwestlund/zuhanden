@@ -35,7 +35,7 @@ class PasswordController:
 
     def send(self, request: Request, session: Session, mail: Mail, validate: Validator):
 
-        errors = request.validate(validate.required("email"), validate.email("email"),)
+        errors = request.validate(validate.required("email"), validate.email("email"))
 
         if errors:
             request.session.flash("error", errors)
@@ -56,7 +56,7 @@ class PasswordController:
             mail.subject(
                 "{}: Reset Your Password".format(config("application.name"))
             ).template(
-                "users/password-reset-email", {"name": user.name, "link": link},
+                "users/password-reset-email", {"name": user.name, "link": link}
             ).to(
                 user.email
             ).send()

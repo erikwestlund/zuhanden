@@ -5,6 +5,7 @@ from masonite.routes import Get, Post
 ROUTES = [Get("/", "IndexController@show").name("index")]
 
 ROUTES = ROUTES + [
+    Get().route("/inertia", "InertiaTestController@show"),
     Get().route("/login", "LoginController@show").name("login"),
     Post().route("/login", "LoginController@login"),
     Get().route("/logout", "LoginController@logout").name("logout"),

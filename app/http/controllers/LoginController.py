@@ -4,6 +4,8 @@ from masonite.auth import Auth
 from masonite.request import Request
 from masonite.view import View
 
+from app.inertia.InertiaResponse import InertiaResponse
+
 
 class LoginController:
     """Login Form Controller."""
@@ -12,9 +14,10 @@ class LoginController:
         """LoginController Constructor."""
         pass
 
-    def show(self, request: Request, view: View, auth: Auth):
+    def show(self, request: Request, inertia: InertiaResponse):
         if request.user():
             return request.redirect("/")
+        return inertia.render("UserLogin")
         return view.render("users/login", {"hide_user_actions": True})
 
     def login(self, request: Request, auth: Auth):

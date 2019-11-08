@@ -1,31 +1,18 @@
-import Event from './modules/Event'
-
-import Alert from './components/Alert'
-import Flash from './components/Flash'
-import NavigationBar from './components/NavigationBar'
-import UserLogin from './components/UserLogin'
-import UserRegister from './components/UserRegister'
+import { InertiaApp } from '@inertiajs/inertia-vue'
+import Vue from 'vue'
 
 require('./bootstrap')
-
-window.Vue = require('vue')
-
 require('./icons')
 
-window.Event = new Event()
+Vue.use(InertiaApp)
 
-window.flash = function (message, level = 'success', timeout = 3) {
-    window.Event.fire('flash', { message, level, timeout })
-}
+const app = document.getElementById('app')
 
-/* eslint no-unused-vars: "off" */
-const app = new Vue({
-    el: '#app',
-    components: {
-        Alert,
-        Flash,
-        NavigationBar,
-        UserLogin,
-        UserRegister
-    }
-})
+new Vue({
+  render: h => h(InertiaApp, {
+    props: {
+      initialPage: JSON.parse(app.dataset.page),
+      resolveComponent: name => require(`./Pages/${name}`).default,
+    },
+  }),
+}).$mount(app)

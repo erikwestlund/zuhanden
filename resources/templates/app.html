@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html class="h-full bg-grey-lighter">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token }}">
+
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600|Roboto Mono|Merriweather:300,400,600"
+          rel="stylesheet"
+          type="text/css">
+
+    <link href="{{ mix('/css/app.css') }}" rel="stylesheet" type="text/css">
+    <script src="{{ mix('/js/manifest.js') }}"></script>
+    <script src="{{ mix('/js/vendor.js') }}"></script>
+    <script src="{{ mix('/js/app.js') }}" defer></script>
+</head>
+<body class="pb-12 border-t-4 border-blue-400 bg-gray-100 font-sans">
+
+<div id="app" data-page="{{ page | safe }}"></div>
+
+</body>
+</html>

@@ -117,7 +117,7 @@
 </template>
 
 <script>
-    import Modal from './Modal'
+    import Modal from '../Shared/Modal'
     import UserLogin from './UserLogin'
 
     export default {

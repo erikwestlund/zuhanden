@@ -2,6 +2,7 @@ from masonite.helpers import config
 from masonite.validation import Validator
 
 from app.auth.MustVerifyEmail import MustVerifyEmail
+from app.inertia.InertiaResponse import InertiaResponse
 from config import application, auth as auth_config
 from masonite.auth import Auth
 from masonite.request import Request
@@ -12,11 +13,13 @@ from app.User import User
 
 
 class RegisterController:
-    def show(self, request: Request, view: View):
+    def show(self, request: Request, view: View, inertia: InertiaResponse):
 
         if auth():
             request.session.flash("warning", "You are already logged in.")
             return request.redirect("/")
+
+        return inertia.render("UserRegister")
 
         return view.render("users/register", {"hide_user_actions": True})
 

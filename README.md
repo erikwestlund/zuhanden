@@ -232,7 +232,7 @@ In order to make the `HelloWorldController` we can use a `craft` command:
 
     $ craft controller HelloWorld
 
-This will scaffold the controller for you and put it in `app/http/controllers/HelloWorldController.py`. This new file will have all the imports for us.
+This will scaffold the controller for you and put it in `old/http/controllers/HelloWorldController.py`. This new file will have all the imports for us.
 
 Inside the `HelloWorldController` we can make our `show` method like this:
 

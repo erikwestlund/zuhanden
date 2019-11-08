@@ -1,7 +1,11 @@
-let mix = require('laravel-mix');
-let tailwindcss = require('tailwindcss');
-let glob = require("glob-all");
-let PurgecssPlugin = require("purgecss-webpack-plugin");
+const cssImport = require('postcss-import')
+const cssNesting = require('postcss-nesting')
+const mix = require('laravel-mix');
+const path = require('path')
+const tailwindcss = require('tailwindcss');
+const glob = require("glob-all");
+const PurgecssPlugin = require("purgecss-webpack-plugin");
+
 
 // Custom PurgeCSS extractor for Tailwind that allows special characters in
 // class names.
@@ -15,18 +19,36 @@ class TailwindExtractor {
 
 mix.setPublicPath('storage/static')
     .setResourceRoot('/resources')
-    .sass('resources/sass/app.scss', 'storage/static/css/app.css')
+    // .sass('resources/sass/app.scss', 'storage/static/css/app.css')
+    // .js('resources/js/old.js', 'storage/static/js/old.js')
+    .postCss('resources/css/app.css', 'storage/static/css/app.css', [
+        cssImport(),
+        cssNesting(),
+        require('tailwindcss'),
+    ])
     .js('resources/js/app.js', 'storage/static/js/app.js')
     .options({
-        processCssUrls: false,
         postCss: [tailwindcss('./tailwind.config.js')],
     })
     .extract([
-        'vue',
+        // 'vue',
         'axios',
         'lodash'
     ])
-    .version();
+    .webpackConfig({
+        output: {chunkFilename: '[name].js?id=[chunkhash]'},
+        resolve: {
+            alias: {
+                'vue$': 'vue/dist/vue.runtime.esm.js',
+                '@': path.resolve('resources/js'),
+            },
+        },
+    })
+    .babelConfig({
+        plugins: ['@babel/plugin-syntax-dynamic-import'],
+    })
+    .version()
+    .sourceMaps()
 
 if (mix.inProduction()) {
     const whitelistPatterns = [
