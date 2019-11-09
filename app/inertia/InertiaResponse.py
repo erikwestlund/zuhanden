@@ -1,8 +1,5 @@
-import hashlib
 import html
 import json
-
-from masonite.helpers import config
 
 
 class InertiaResponse:
@@ -25,14 +22,28 @@ class InertiaResponse:
             "component": self.get_component(component),
             "props": self.get_props(props),
             "url": self.request.path,
-            "version": self.get_version(),
+            "version": self.asset_version
         }
 
     def get_props(self, props):
+        props.update({"errors": (self.request.session.get('errors') or {})})
+        props.update({"auth": self.get_auth()})
         return props
+
+    def get_auth(self):
+        user = self.request.user()
+
+        if not user:
+            return {
+                "user": None
+            }
+
+        return {
+            "user": {
+                "email": user.email,
+                "name": user.name
+            }
+        }
 
     def get_component(self, component):
         return html.escape(component)
-
-    def get_version(self):
-        return self.asset_version

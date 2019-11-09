@@ -2,7 +2,7 @@
 
 from masonite.routes import Get, Post
 
-ROUTES = [Get("/", "IndexController@show").name("index")]
+ROUTES = [Get("/", "InertiaTestController@show").name("index")]
 
 ROUTES = ROUTES + [
     Get().route("/inertia", "InertiaTestController@show"),

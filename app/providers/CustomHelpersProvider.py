@@ -8,6 +8,7 @@ from masonite.view import View
 from app.helpers.abort import abort_404, abort_403
 from app.helpers.error_json_response import error_json_response
 from app.helpers.mix import mix
+from app.helpers.return_with_errors import return_with_errors
 from app.helpers.success_json_response import success_json_response
 
 
@@ -23,6 +24,7 @@ class CustomHelpersProvider(ServiceProvider):
     def boot(self, view: View):
         """Add custom helper functions to Masonite."""
 
+        builtins.return_with_errors = return_with_errors
         builtins.error_response = error_json_response
         builtins.success_response = success_json_response
         builtins.abort_404 = abort_404

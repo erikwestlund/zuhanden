@@ -3,9 +3,9 @@
         <h1 class="text-center font-bold text-3xl">Welcome Back!</h1>
         <form class="mt-8 mx-auto max-w-md bg-white rounded-lg shadow-lg overflow-hidden" @submit.prevent="submit">
             <div class="px-10 py-12">
-                <text-input v-model="form.email" label="Email" type="email"
+                <text-input v-model="form.email" :errors="$page.errors.email" label="Email" type="email"
                             autofocus autocapitalize="off"/>
-                <text-input v-model="form.password" class="mt-6" label="Password" type="password"/>
+                <text-input v-model="form.password" :errors="$page.errors.password" class="mt-6" label="Password" type="password"/>
             </div>
             <div class="px-10 py-4 bg-grey-lightest border-t border-grey-lighter flex justify-between items-center">
                 <a class="hover:underline" tabindex="-1" href="#reset-password">Forget password?</a>
@@ -29,7 +29,7 @@
         props: {
             errors: Object
         },
-        data() {
+        data () {
             return {
                 sending: false,
                 form: {
@@ -39,7 +39,7 @@
             }
         },
         methods: {
-            submit() {
+            submit () {
                 this.sending = true
                 this.$inertia.post('/login', {
                     email: this.form.email,

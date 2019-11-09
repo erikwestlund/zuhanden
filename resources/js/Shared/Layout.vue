@@ -17,6 +17,7 @@
                 </div>
                 <div class="md:flex items-center">
                     <inertia-link
+                        v-if="signedOut"
                         href="/login"
                         class="btn-outline"
                     >
@@ -27,6 +28,7 @@
                         Sign In
                     </inertia-link>
                     <inertia-link
+                        v-if="signedOut"
                         href="/register"
                         class="btn-outline"
                     >
@@ -52,10 +54,18 @@
         props: {
             title: String,
         },
+        computed: {
+            signedIn () {
+                return Boolean(this.$page.auth.user)
+            },
+            signedOut () {
+                return !this.signedIn
+            }
+        },
         watch: {
             title: {
                 immediate: true,
-                handler(title) {
+                handler (title) {
                     document.title = title
                 },
             },
