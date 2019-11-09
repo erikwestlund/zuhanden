@@ -88,9 +88,9 @@ class PasswordController:
             user.save()
 
             if request.user():
-                auth.logout()
+                auth.sign_out()
 
             request.session.flash(
                 "success", "Your password has been reset. Login below."
             )
-            return request.redirect("/login")
+            return request.redirect("/users/sign-in")

@@ -16,7 +16,7 @@ class VerifyEmailController:
             request.session.flash(
                 "warning", "You must be logged in verify your email address."
             )
-            return request.redirect("/login")
+            return request.redirect("/users/sign-in")
 
         return view.render("users/email-verification")
 

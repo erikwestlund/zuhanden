@@ -4,10 +4,6 @@
         "plugin:vue/recommended"
     ],
     "rules": {
-        "indent": [
-            "error",
-            4
-        ],
         "vue/html-indent": [
             "error",
             4,
@@ -18,8 +14,25 @@
                 "alignAttributesVertically": false,
                 "ignores": []
             }
+        ],
+        "vue/script-indent": [
+            "error",
+            4,
+            {
+                "baseIndent": 1
+            }
         ]
     },
+    "overrides": [
+        {
+            "files": [
+                "*.vue"
+            ],
+            "rules": {
+                "indent": "off"
+            }
+        }
+    ],
     "globals": {
         "_": true,
         "app": true,

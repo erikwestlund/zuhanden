@@ -1,17 +1,9 @@
 """The HomeController Module."""
 
-from masonite.request import Request
-from masonite.view import View
-
-from app.User import User
-from app.auth.authenticators import user_can
+from app.inertia.InertiaResponse import InertiaResponse
 
 
 class IndexController:
-    """Home Dashboard Controller."""
 
-    def __init__(self):
-        pass
-
-    def show(self, view: View):
-        return view.render("index")
+    def show(self, inertia: InertiaResponse):
+        return inertia.render("Index")

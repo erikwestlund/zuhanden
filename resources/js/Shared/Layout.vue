@@ -16,28 +16,46 @@
                 >
                 </div>
                 <div class="md:flex items-center">
-                    <inertia-link
-                        v-if="signedOut"
-                        href="/login"
-                        class="btn-outline"
-                    >
-                        <fa-icon
-                            class="mr-2"
-                            :icon="['fad', 'sign-in']"
-                        />
-                        Sign In
-                    </inertia-link>
-                    <inertia-link
-                        v-if="signedOut"
-                        href="/register"
-                        class="btn-outline"
-                    >
-                        <fa-icon
-                            class="mr-2"
-                            :icon="['fad', 'user-plus']"
-                        />
-                        Sign Up
-                    </inertia-link>
+                    <transition name="trx-fade-in">
+                        <inertia-link
+                            v-if="signedOut"
+                            href="/users/sign-in"
+                            class="btn-outline"
+                        >
+                            <fa-icon
+                                class="mr-2"
+                                :icon="['fad', 'sign-in']"
+                            />
+                            Sign In
+                        </inertia-link>
+                    </transition>
+                    <transition name="trx-fade-in">
+                        <inertia-link
+                            v-if="signedIn"
+                            href="/users/sign-out"
+                            class="btn-outline"
+                        >
+                            <fa-icon
+                                class="mr-2"
+                                :icon="['fad', 'sign-out']"
+                            />
+                            Sign Out
+                        </inertia-link>
+                    </transition>
+                    <transition name="trx-fade-in">
+
+                        <inertia-link
+                            v-if="signedOut"
+                            href="/users/register"
+                            class="btn-outline"
+                        >
+                            <fa-icon
+                                class="mr-2"
+                                :icon="['fad', 'user-plus']"
+                            />
+                            Sign Up
+                        </inertia-link>
+                    </transition>
                 </div>
             </nav>
         </header>

@@ -2,15 +2,14 @@
 
 from masonite.routes import Get, Post
 
-ROUTES = [Get("/", "InertiaTestController@show").name("index")]
+ROUTES = [Get("/", "IndexController@show").name("index")]
 
 ROUTES = ROUTES + [
-    Get().route("/inertia", "InertiaTestController@show"),
-    Get().route("/login", "LoginController@show").name("login"),
-    Post().route("/login", "LoginController@login"),
-    Get().route("/logout", "LoginController@logout").name("logout"),
-    Get().route("/register", "RegisterController@show").name("register"),
-    Post().route("/register", "RegisterController@store"),
+    Get().route("/users/sign-in", "SignInController@show").name("sign_in"),
+    Post().route("/users/sign-in", "SignInController@sign_in"),
+    Get().route("/users/sign-out", "SignInController@sign_out").name("sign_out"),
+    Get().route("/users/register", "RegisterController@show").name("register"),
+    Post().route("/users/register", "RegisterController@store"),
     Get()
     .route("/users/verify-email", "VerifyEmailController@verify_show")
     .name("verify"),
