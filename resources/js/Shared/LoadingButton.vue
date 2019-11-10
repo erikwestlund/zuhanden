@@ -1,14 +1,17 @@
 <template>
-  <button :disabled="loading" class="flex items-center">
-    <div v-if="loading" class="btn-spinner mr-2" />
-    <slot />
-  </button>
+    <button :disabled="loading" class="flex items-center">
+        <loading-spinner v-if="loading" class="mr-2"/>
+        <slot/>
+    </button>
 </template>
 
 <script>
-export default {
-  props: {
-    loading: Boolean,
-  },
-}
+    import LoadingSpinner from '@/Shared/LoadingSpinner'
+
+    export default {
+        components: { LoadingSpinner },
+        props: {
+            loading: Boolean
+        }
+    }
 </script>

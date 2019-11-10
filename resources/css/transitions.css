@@ -1,9 +1,16 @@
 /* purgecss start ignore */
 /* fade */
-.trx-fade-leave-active {
-  transition: all .4s ease;
+/*.trx-fade-leave-active {*/
+/*  transition: all .4s ease;*/
+/*}*/
+/*.trx-fade-enter, .trx-fade-leave-to {*/
+/*  opacity: 0;*/
+/*}*/
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
 }
-.trx-fade-enter, .trx-fade-leave-to {
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
   opacity: 0;
 }
 

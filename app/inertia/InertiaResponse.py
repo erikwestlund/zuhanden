@@ -1,13 +1,14 @@
 import html
 import json
 
+from app.inertia.InertiaAssetVersion import inertia_asset_version
+
 
 class InertiaResponse:
     def __init__(self, container):
         self.container = container
         self.request = self.container.make("Request")
         self.view = self.container.make("View")
-        self.asset_version = self.container.make("InertiaAssetVersion").get()
 
     def render(self, component, props={}):
         page_data = self.get_page_data(component, props)
@@ -22,7 +23,7 @@ class InertiaResponse:
             "component": self.get_component(component),
             "props": self.get_props(props),
             "url": self.request.path,
-            "version": self.asset_version
+            "version": inertia_asset_version()
         }
 
     def get_props(self, props):

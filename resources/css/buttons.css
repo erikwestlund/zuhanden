@@ -1,5 +1,5 @@
 .btn {
-  @apply py-1 px-2 rounded text-sm border-4;
+  @apply py-1 px-3 rounded border-4 text-lg font-bold;
 }
 
 .btn-white {
@@ -14,6 +14,10 @@
   @apply flex-shrink-0 bg-blue-700 border-blue-700 text-white;
 }
 
+.btn-blue:hover {
+    @apply bg-blue-600 border-blue-600;
+}
+
 .btn-green {
   @apply flex-shrink-0 bg-green-300 border-green-300 text-white;
 }
@@ -23,8 +27,13 @@
 }
 
 .btn-orange {
-  @apply flex-shrink-0 bg-orange-500 border-orange-500 text-white;
+  @apply flex-shrink-0 bg-orange-600 border-orange-600 text-white;
 }
+
+.btn-orange:hover {
+    @apply bg-orange-700 border-orange-700;
+}
+
 
 .btn-outline {
     @apply block text-lg py-2 leading-none text-white border-white mt-4

@@ -4,6 +4,7 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 
 import {
     faBomb,
+    faCircleNotch,
     faExclamationCircle,
     faLock,
     faSignIn,
@@ -26,9 +27,11 @@ import { faGithub, faTwitter } from '@fortawesome/free-brands-svg-icons'
 
 library.add(
     faBomb,
+    faCircleNotch,
     faExclamationCircle,
     faGithub,
     faLock,
+    faTwitter,
     faSignIn,
     faSignOut,
     faUser,

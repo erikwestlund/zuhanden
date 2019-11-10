@@ -701,11 +701,12 @@ video {
 .btn {
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
   border-radius: 0.25rem;
-  font-size: 0.875rem;
   border-width: 4px;
+  font-size: 1.125rem;
+  font-weight: 700;
 }
 
 .btn-white {
@@ -731,6 +732,11 @@ video {
   color: #fff;
 }
 
+.btn-blue:hover {
+  background-color: #3182ce;
+  border-color: #3182ce;
+}
+
 .btn-green {
   flex-shrink: 0;
   background-color: #9ae6b4;
@@ -747,9 +753,14 @@ video {
 
 .btn-orange {
   flex-shrink: 0;
-  background-color: #ed8936;
-  border-color: #ed8936;
+  background-color: #dd6b20;
+  border-color: #dd6b20;
   color: #fff;
+}
+
+.btn-orange:hover {
+  background-color: #c05621;
+  border-color: #c05621;
 }
 
 .btn-outline {
@@ -887,12 +898,24 @@ button[disabled]:hover {
 
 /* fade */
 
-.trx-fade-leave-active {
-  -webkit-transition: all .4s ease;
-  transition: all .4s ease;
+/*.trx-fade-leave-active {*/
+
+/*  transition: all .4s ease;*/
+
+/*}*/
+
+/*.trx-fade-enter, .trx-fade-leave-to {*/
+
+/*  opacity: 0;*/
+
+/*}*/
+
+.fade-enter-active, .fade-leave-active {
+  -webkit-transition: opacity .5s;
+  transition: opacity .5s;
 }
 
-.trx-fade-enter, .trx-fade-leave-to {
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
   opacity: 0;
 }
 

@@ -18,13 +18,13 @@
                     type="password"
                 />
             </div>
-            <div class="px-10 py-4 bg-grey-lightest border-t border-grey-lighter flex justify-between items-center">
+            <div class="px-10 py-4 bg-gray-100 border-t border-gray-300 flex justify-between items-center">
                 <a class="hover:underline" tabindex="-1" href="#reset-password">Forget password?</a>
                 <loading-button
                     :loading="sending"
-                    class="btn-indigo"
+                    class="btn btn-orange"
                     type="submit">
-                    Login
+                    Sign In
                 </loading-button>
             </div>
         </form>
