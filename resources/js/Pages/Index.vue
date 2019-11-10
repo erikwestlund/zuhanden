@@ -10,7 +10,7 @@
 
     export default {
         components: {
-            Layout,
-        },
+            Layout
+        }
     }
 </script>

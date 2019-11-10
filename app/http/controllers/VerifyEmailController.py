@@ -7,6 +7,7 @@ from masonite.request import Request
 from masonite.view import View
 
 from app.auth.MustVerifyEmail import MustVerifyEmail
+from app.inertia.InertiaResponse import InertiaResponse
 
 
 class VerifyEmailController:
@@ -14,13 +15,15 @@ class VerifyEmailController:
 
         if not request.user():
             request.session.flash(
-                "warning", "You must be logged in verify your email address."
+                "warning", "You must be logged in to verify your email address."
             )
             return request.redirect("/users/sign-in")
 
         return view.render("users/email-verification")
 
-    def confirm_email(self, request: Request, view: View, auth: Auth):
+    def confirm_email(
+        self, request: Request, view: View, auth: Auth, inertia: InertiaResponse
+    ):
         sign = Sign()
         token = sign.unsign(request.param("id"))
 
@@ -38,9 +41,11 @@ class VerifyEmailController:
                         user.verified_at = datetime.datetime.now()
                         user.save()
 
-                        return view.render("users/email-verification-success")
+                        request.session.flash('success', 'Your email has successfully been verified.')
+                        return request.redirect("/")
 
-        return view.render("users/email-verification-error")
+        request.session.flash('error', 'Something went wrong. We could not verify your email address.')
+        return request.redirect("/")
 
     def send_verify_email(self, manager: MailManager, request: Request):
         user = request.user()

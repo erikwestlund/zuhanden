@@ -23,6 +23,7 @@ from app.providers.ModelObserverProvider import ModelObserverProvider
 from app.providers.AppStateProvider import AppStateProvider
 from app.providers.CommandsProvider import CommandsProvider
 from app.providers.CustomHelpersProvider import CustomHelpersProvider
+from app.providers.RuleProvider import RuleProvider
 
 """Providers List
 Providers are a simple way to remove or add functionality for Masonite
@@ -58,4 +59,5 @@ PROVIDERS = [
     ModelObserverProvider,
     CustomHelpersProvider,
     InertiaProvider,
+    RuleProvider,
 ]

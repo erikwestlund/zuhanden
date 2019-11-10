@@ -6,7 +6,10 @@
                     class="mr-4 text-blue-400"
                     :icon="['fad', 'university']"
                 />
-                <a href="/" class="text-blue-100 hover:text-blue-100">Academic</a>
+                <a
+                    href="/"
+                    class="text-blue-100 hover:text-blue-100"
+                >Academic</a>
             </span>
         </div>
         <div class="block md:hidden">
@@ -14,7 +17,7 @@
                 class="flex items-center px-3 py-2 border rounded text-blue-900 bg-white border-white hover:text-blue-700 hover:border-white"
                 @click="toggleMobileNav()"
             >
-                <fa-icon :icon="['far', 'bars']"/>
+                <fa-icon :icon="['far', 'bars']" />
             </button>
         </div>
         <div
@@ -35,7 +38,10 @@
                     Blog
                 </a>
             </div>
-            <div class="md:flex items-center" v-if="showUserActions">
+            <div
+                v-if="showUserActions"
+                class="md:flex items-center"
+            >
                 <a
                     v-if="! loggedIn"
                     href="/register"
@@ -50,9 +56,9 @@
                 <a
                     v-if="! loggedIn"
                     href="/login"
+                    class="block md:inline-block text-lg md:px-4 py-2 leading-none md:border md:rounded text-white border-white md:hover:border-transparent md:hover:text-blue-900 md:hover:bg-white mt-4 md:mt-0"
                     @click.prevent
                     @click.exact="showLoginModal = true"
-                    class="block md:inline-block text-lg md:px-4 py-2 leading-none md:border md:rounded text-white border-white md:hover:border-transparent md:hover:text-blue-900 md:hover:bg-white mt-4 md:mt-0"
                 >
                     <fa-icon
                         class="mr-2"
@@ -60,8 +66,14 @@
                     />
                     Sign In
                 </a>
-                <span class="text-white mr-8" v-if="loggedIn">
-                    <fa-icon class="mr-1" :icon="['fad', 'user-circle']"/>
+                <span
+                    v-if="loggedIn"
+                    class="text-white mr-8"
+                >
+                    <fa-icon
+                        class="mr-1"
+                        :icon="['fad', 'user-circle']"
+                    />
 
                     <span v-if="userName">
                         {{ user.name }}
@@ -87,7 +99,10 @@
             done-text="Close"
             @close="showLoginModal = false"
         >
-            <h3 slot="header" class="text-2xl text-blue-900">
+            <h3
+                slot="header"
+                class="text-2xl text-blue-900"
+            >
                 <fa-icon
                     class="mr-2"
                     :icon="['fad', 'sign-in']"
@@ -96,7 +111,7 @@
             </h3>
 
             <div slot="body">
-                <user-login/>
+                <user-login />
             </div>
 
             <div slot="footer">
@@ -123,6 +138,11 @@
     export default {
         name: 'NavigationBar',
 
+        components: {
+            Modal,
+            UserLogin
+        },
+
         props: {
             showUserActions: {
                 default: true,
@@ -130,12 +150,7 @@
             }
         },
 
-        components: {
-            Modal,
-            UserLogin
-        },
-
-        data() {
+        data () {
             return {
                 state: State,
                 showLoginModal: false,
@@ -144,21 +159,21 @@
         },
 
         computed: {
-            loggedIn() {
+            loggedIn () {
                 return this.state.user.loggedIn
             },
 
-            user() {
+            user () {
                 return this.state.user
             },
 
-            userName() {
+            userName () {
                 return this.state.user.name || ''
             }
 
         },
 
-        created() {
+        created () {
             Event.listen('closeLoginModal', () => {
                 this.showLoginModal = false
             })
@@ -166,11 +181,10 @@
             Event.listen('userLoggedIn', () => {
                 this.state.user.loggedIn = true
             })
-
         },
 
         methods: {
-            toggleMobileNav() {
+            toggleMobileNav () {
                 this.showMobileNav = !this.showMobileNav
             }
         }

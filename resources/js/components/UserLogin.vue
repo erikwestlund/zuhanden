@@ -74,7 +74,7 @@
     export default {
         mixins: [MixinSubmitting],
 
-        data() {
+        data () {
             return {
                 submittingType: 'logging_in',
                 showLoginModal: false,
@@ -87,7 +87,7 @@
         },
 
         methods: {
-            onSubmit() {
+            onSubmit () {
                 this.turnOnSubmitting()
                 this.form.post('/login')
                     .then((response) => {

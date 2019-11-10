@@ -1,5 +1,8 @@
 <template>
-    <fa-icon class="fa-spin" :icon="['fad', 'circle-notch']" />
+    <fa-icon
+        class="fa-spin"
+        :icon="['fad', 'circle-notch']"
+    />
 </template>
 
 <script>

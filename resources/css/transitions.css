@@ -1,35 +1,11 @@
 /* purgecss start ignore */
 /* fade */
-/*.trx-fade-leave-active {*/
-/*  transition: all .4s ease;*/
-/*}*/
-/*.trx-fade-enter, .trx-fade-leave-to {*/
-/*  opacity: 0;*/
-/*}*/
 
 .fade-enter-active, .fade-leave-active {
-  transition: opacity .5s;
+  transition: opacity .2s;
 }
 .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
   opacity: 0;
 }
 
-/* fade in */
-.trx-fade-in-enter-active, .trx-fade-in-leave-active {
-  transition: opacity 0.25s ease-out;
-}
-
-.trx-fade-in-enter, .trx-fade-in-leave-to {
-  opacity: 0;
-}
-
-/* slide fade */
-.trx-slide-fade-enter-active {
-  transition: all .4s ease;
-}
-
-.trx-slide-fade-enter, .slide-fade-leave-to {
-  transform: translateX(10px);
-  opacity: 0;
-}
 /* purgecss end ignore */

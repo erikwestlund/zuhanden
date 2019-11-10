@@ -111,41 +111,41 @@
 </template>
 
 <script>
-import Form from '../modules/Form.js'
+    import Form from '../modules/Form.js'
 
-export default {
-    name: 'UserRegister',
+    export default {
+        name: 'UserRegister',
 
-    data () {
-        return {
-            submitting: false,
-            form: new Form({
-                name: '',
-                email: '',
-                password: '',
-                password_confirmation: ''
-            })
-        }
-    },
-
-    methods: {
-        onSubmit () {
-            this.submitting = true
-            this.form.post('/register')
-                .then((response) => {
-                    flash('Signing you up...')
-
-                    setTimeout(() => {
-                        window.location.replace('/')
-                    }, 500)
-
-                    this.submitting = false
+        data () {
+            return {
+                submitting: false,
+                form: new Form({
+                    name: '',
+                    email: '',
+                    password: '',
+                    password_confirmation: ''
                 })
-                .catch((errors) => {
-                    flash('User registration failed.', 'danger')
-                    this.submitting = false
-                })
+            }
+        },
+
+        methods: {
+            onSubmit () {
+                this.submitting = true
+                this.form.post('/register')
+                    .then((response) => {
+                        flash('Signing you up...')
+
+                        setTimeout(() => {
+                            window.location.replace('/')
+                        }, 500)
+
+                        this.submitting = false
+                    })
+                    .catch((errors) => {
+                        flash('User registration failed.', 'danger')
+                        this.submitting = false
+                    })
+            }
         }
     }
-}
 </script>

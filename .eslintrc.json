@@ -8,6 +8,23 @@
             "error",
             4
         ],
+        "vue/require-default-prop": [
+            "error",
+            {
+                "required": false,
+                "non-required": false
+            }
+        ],
+        "vue/max-attributes-per-line": [
+            "error",
+            {
+                "singleline": 1,
+                "multiline": {
+                    "max": 1,
+                    "allowFirstLine": false
+                }
+            }
+        ],
         "vue/html-indent": [
             "error",
             4,

@@ -8,8 +8,8 @@ ROUTES = ROUTES + [
     Get().route("/users/sign-in", "SignInController@show").name("sign_in"),
     Post().route("/users/sign-in", "SignInController@sign_in"),
     Get().route("/users/sign-out", "SignInController@sign_out").name("sign_out"),
-    Get().route("/users/register", "RegisterController@show").name("register"),
-    Post().route("/users/register", "RegisterController@store"),
+    Get().route("/users/sign-up", "SignUpController@show").name("sign_up"),
+    Post().route("/users/sign-up", "SignUpController@store"),
     Get()
     .route("/users/verify-email", "VerifyEmailController@verify_show")
     .name("verify"),

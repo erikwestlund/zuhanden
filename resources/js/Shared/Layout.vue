@@ -8,13 +8,15 @@
                             class="mr-4 text-blue-400"
                             :icon="['fad', 'university']"
                         />
-                        <a href="/" class="text-blue-100 hover:text-blue-100">Academic</a>
+                        <a
+                            href="/"
+                            class="text-blue-100 hover:text-blue-100"
+                        >Academic</a>
                     </span>
                 </div>
                 <div
                     class="w-full flex-grow md:flex md:items-center md:w-auto"
-                >
-                </div>
+                />
                 <div class="md:flex items-center">
                     <inertia-link
                         v-if="signedOut"
@@ -28,8 +30,8 @@
                         Sign In
                     </inertia-link>
                     <inertia-link
-                        href="/users/sign-out"
                         v-if="signedIn"
+                        href="/users/sign-out"
                         class="btn-outline"
                     >
                         <fa-icon
@@ -40,7 +42,7 @@
                     </inertia-link>
                     <inertia-link
                         v-if="signedOut"
-                        href="/users/register"
+                        href="/users/sign-up"
                         class="btn-outline"
                     >
                         <fa-icon
@@ -52,18 +54,30 @@
                 </div>
             </nav>
         </header>
-        <main role="main" class="sans-serif container mx-auto pt-12">
+        <main
+            role="main"
+            class="sans-serif container mx-auto pt-12"
+        >
+            <flash-messages />
             <article>
-                <slot/>
+                <slot />
             </article>
         </main>
     </div>
 </template>
 
 <script>
+    import FlashMessages from '@/Shared/FlashMessages'
+
     export default {
+        components: {
+            FlashMessages
+        },
         props: {
-            title: String,
+            title: {
+                type: String,
+                default: 'Academic.page'
+            }
         },
         computed: {
             signedIn () {
@@ -78,8 +92,8 @@
                 immediate: true,
                 handler (title) {
                     document.title = title
-                },
-            },
-        },
+                }
+            }
+        }
     }
 </script>

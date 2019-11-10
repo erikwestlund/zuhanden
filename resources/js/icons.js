@@ -4,8 +4,10 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 
 import {
     faBomb,
+    faCheckCircle,
     faCircleNotch,
     faExclamationCircle,
+    faInfoCircle,
     faLock,
     faSignIn,
     faSignOut,
@@ -19,7 +21,10 @@ import {
     faUniversity as fasUniversity
 } from '@fortawesome/pro-solid-svg-icons'
 
-import { faUniversity as farUniversity } from '@fortawesome/pro-regular-svg-icons'
+import {
+    faTimes,
+    faUniversity as farUniversity
+} from '@fortawesome/pro-regular-svg-icons'
 
 import { FontAwesomeIcon, FontAwesomeLayers } from '@fortawesome/vue-fontawesome'
 
@@ -27,13 +32,16 @@ import { faGithub, faTwitter } from '@fortawesome/free-brands-svg-icons'
 
 library.add(
     faBomb,
+    faCheckCircle,
     faCircleNotch,
     faExclamationCircle,
+    faInfoCircle,
     faGithub,
     faLock,
-    faTwitter,
     faSignIn,
     faSignOut,
+    faTimes,
+    faTwitter,
     faUser,
     faUserCircle,
     faUserPlus,

@@ -7,9 +7,7 @@ from app.inertia.InertiaAssetVersion import inertia_asset_version
 class InertiaMiddleware:
     """Inertia Middleware to check whether this is an Inertia request."""
 
-    def __init__(
-        self, request: Request, response: Response
-    ):
+    def __init__(self, request: Request, response: Response):
         self.request = request
         self.response = response
 

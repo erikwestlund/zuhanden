@@ -19,8 +19,7 @@ class SignInController:
 
     def sign_in(self, request: Request, auth: Auth, validate: Validator):
         errors = request.validate(
-            validate.required(['email', 'password']),
-            validate.email('email'),
+            validate.required(["email", "password"]), validate.email("email"),
         )
 
         if errors:
@@ -29,7 +28,9 @@ class SignInController:
         user = auth.login(request.input("email"), request.input("password"))
 
         if not user:
-            return return_with_errors({"password": "These credentials could not be verified"})
+            return return_with_errors(
+                {"password": "These credentials could not be verified"}
+            )
 
         request.session.flash("success", "You have been logged in.")
         return request.redirect("/")

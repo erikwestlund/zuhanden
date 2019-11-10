@@ -50,51 +50,51 @@
 </template>
 
 <script>
-export default {
-    name: 'Modal',
-    props: {
-        doneText: {
-            type: String,
-            default: 'OK'
+    export default {
+        name: 'Modal',
+        props: {
+            doneText: {
+                type: String,
+                default: 'OK'
+            },
+            noFooter: {
+                type: Boolean,
+                default: false
+            },
+            doneIcon: {
+                type: String,
+                default: 'times'
+            },
+            large: {
+                type: Boolean,
+                default: false
+            },
+            small: {
+                type: Boolean,
+                default: false
+            },
+            show: {
+                type: Boolean,
+                default: false
+            }
         },
-        noFooter: {
-            type: Boolean,
-            default: false
-        },
-        doneIcon: {
-            type: String,
-            default: 'times'
-        },
-        large: {
-            type: Boolean,
-            default: false
-        },
-        small: {
-            type: Boolean,
-            default: false
-        },
-        show: {
-            type: Boolean,
-            default: false
-        }
-    },
 
-    created () {
-        document.addEventListener('keyup', this.escapeKeyListener)
-    },
+        created () {
+            document.addEventListener('keyup', this.escapeKeyListener)
+        },
 
-    destroyed () {
-        document.removeEventListener('keyup', this.escapeKeyListener)
-    },
+        destroyed () {
+            document.removeEventListener('keyup', this.escapeKeyListener)
+        },
 
-    methods: {
-        escapeKeyListener (event) {
-            if (event.keyCode === 27) {
-                this.$emit('close')
+        methods: {
+            escapeKeyListener (event) {
+                if (event.keyCode === 27) {
+                    this.$emit('close')
+                }
             }
         }
     }
-}
 </script>
 
 <style scoped>
