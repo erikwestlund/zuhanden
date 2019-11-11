@@ -1,64 +1,55 @@
 <template>
     <div>
         <header>
-            <nav class="flex items-center justify-between flex-wrap bg-blue-900 py-3 px-3 md:px-12 shadow-lg">
-                <div class="flex items-center flex-shrink-0 text-white mr-12">
-                    <span class="font-semibold font-serif text-4xl">
-                        <fa-icon
-                            class="mr-4 text-blue-400"
-                            :icon="['fad', 'university']"
-                        />
-                        <a
-                            href="/"
-                            class="text-blue-100 hover:text-blue-100"
-                        >Academic</a>
-                    </span>
-                </div>
-                <div
-                    class="w-full flex-grow md:flex md:items-center md:w-auto"
-                />
-                <div class="md:flex items-center">
-                    <inertia-link
-                        v-if="signedOut"
-                        href="/users/sign-in"
-                        class="btn-outline"
-                    >
-                        <fa-icon
-                            class="mr-2"
-                            :icon="['fad', 'sign-in']"
-                        />
-                        Sign In
-                    </inertia-link>
-                    <inertia-link
-                        v-if="signedIn"
-                        href="/users/sign-out"
-                        class="btn-outline"
-                    >
-                        <fa-icon
-                            class="mr-2"
-                            :icon="['fad', 'sign-out']"
-                        />
-                        Sign Out
-                    </inertia-link>
-                    <inertia-link
-                        v-if="signedOut"
-                        href="/users/sign-up"
-                        class="btn-outline"
-                    >
-                        <fa-icon
-                            class="mr-2"
-                            :icon="['fad', 'user-plus']"
-                        />
-                        Sign Up
-                    </inertia-link>
+            <nav>
+                <div class="container mx-auto flex items-center justify-between flex-wrap py-3 px-3 md:px-0">
+                    <div class="flex items-center flex-shrink-0 text-white mr-12">
+                        <span class="font-semibold font-serif text-4xl">
+                            <fa-icon
+                                class="mr-4 text-blue-400"
+                                :icon="['fad', 'university']"
+                            />
+                            <a
+                                href="/"
+                                class="hover:text-blue-100"
+                            >Academic</a>
+                        </span>
+                    </div>
+                    <div
+                        class="w-full flex-grow md:flex md:items-center md:w-auto"
+                    />
+                    <div class="md:flex items-center">
+                        <inertia-link
+                            v-if="signedOut"
+                            href="/users/sign-in"
+                            class="btn-outline"
+                        >
+                            <fa-icon
+                                class="mr-2"
+                                :icon="['fad', 'sign-in']"
+                            />
+                            Sign In
+                        </inertia-link>
+                        <inertia-link
+                            v-if="signedIn"
+                            href="/users/sign-out"
+                            class="btn-outline"
+                        >
+                            <fa-icon
+                                class="mr-2"
+                                :icon="['fad', 'sign-out']"
+                            />
+                            Sign Out
+                        </inertia-link>
+                    </div>
                 </div>
             </nav>
         </header>
         <main
             role="main"
-            class="sans-serif container mx-auto pt-12"
+            class="sans-serif container mx-auto text-white p-4"
         >
-            <flash-messages />
+            <flash-messages class="mb-4" />
             <article>
                 <slot />
             </article>

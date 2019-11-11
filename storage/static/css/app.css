@@ -629,6 +629,12 @@ video {
 
 /* Components */
 
+.bg-blue-gradient {
+  background: rgb(42, 67, 101);
+  background: -webkit-gradient(linear, left bottom, left top, from(rgba(42, 67, 101, 1)), color-stop(35%, rgba(44, 82, 130, 1)), to(rgba(29, 46, 70, 1)));
+  background: linear-gradient(0deg, rgba(42, 67, 101, 1) 0%, rgba(44, 82, 130, 1) 35%, rgba(29, 46, 70, 1) 100%);
+}
+
 .alert-info,
 .alert-message {
   background-color: #4299e1;
@@ -670,6 +676,7 @@ video {
   padding-right: 1rem;
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
 }
 
 .alert-danger, .alert-error {
@@ -809,6 +816,7 @@ button[disabled]:hover {
 .form-label {
   margin-bottom: 0.5rem;
   display: block;
+  font-size: .875rem;
   color: #1a202c;
   -webkit-user-select: none;
      -moz-user-select: none;
@@ -888,7 +896,7 @@ button[disabled]:hover {
 .form-error {
   color: #f56565;
   margin-top: 0.5rem;
-  font-size: 0.875rem;
+  font-size: .875rem;
 }
 
 .form-input.error,
@@ -11234,11 +11242,15 @@ button[disabled]:hover {
 }
 
 .text-xs {
-  font-size: 0.75rem;
+  font-size: .75rem;
 }
 
 .text-sm {
-  font-size: 0.875rem;
+  font-size: .875rem;
+}
+
+.text-tiny {
+  font-size: .875rem;
 }
 
 .text-base {
@@ -11271,6 +11283,14 @@ button[disabled]:hover {
 
 .text-6xl {
   font-size: 4rem;
+}
+
+.text-15xl {
+  font-size: 15rem;
+}
+
+.text-20xl {
+  font-size: 20rem;
 }
 
 .italic {
@@ -22005,11 +22025,15 @@ button[disabled]:hover {
   }
 
   .sm\:text-xs {
-    font-size: 0.75rem;
+    font-size: .75rem;
   }
 
   .sm\:text-sm {
-    font-size: 0.875rem;
+    font-size: .875rem;
+  }
+
+  .sm\:text-tiny {
+    font-size: .875rem;
   }
 
   .sm\:text-base {
@@ -22042,6 +22066,14 @@ button[disabled]:hover {
 
   .sm\:text-6xl {
     font-size: 4rem;
+  }
+
+  .sm\:text-15xl {
+    font-size: 15rem;
+  }
+
+  .sm\:text-20xl {
+    font-size: 20rem;
   }
 
   .sm\:italic {
@@ -32777,11 +32809,15 @@ button[disabled]:hover {
   }
 
   .md\:text-xs {
-    font-size: 0.75rem;
+    font-size: .75rem;
   }
 
   .md\:text-sm {
-    font-size: 0.875rem;
+    font-size: .875rem;
+  }
+
+  .md\:text-tiny {
+    font-size: .875rem;
   }
 
   .md\:text-base {
@@ -32814,6 +32850,14 @@ button[disabled]:hover {
 
   .md\:text-6xl {
     font-size: 4rem;
+  }
+
+  .md\:text-15xl {
+    font-size: 15rem;
+  }
+
+  .md\:text-20xl {
+    font-size: 20rem;
   }
 
   .md\:italic {
@@ -43549,11 +43593,15 @@ button[disabled]:hover {
   }
 
   .lg\:text-xs {
-    font-size: 0.75rem;
+    font-size: .75rem;
   }
 
   .lg\:text-sm {
-    font-size: 0.875rem;
+    font-size: .875rem;
+  }
+
+  .lg\:text-tiny {
+    font-size: .875rem;
   }
 
   .lg\:text-base {
@@ -43586,6 +43634,14 @@ button[disabled]:hover {
 
   .lg\:text-6xl {
     font-size: 4rem;
+  }
+
+  .lg\:text-15xl {
+    font-size: 15rem;
+  }
+
+  .lg\:text-20xl {
+    font-size: 20rem;
   }
 
   .lg\:italic {
@@ -54321,11 +54377,15 @@ button[disabled]:hover {
   }
 
   .xl\:text-xs {
-    font-size: 0.75rem;
+    font-size: .75rem;
   }
 
   .xl\:text-sm {
-    font-size: 0.875rem;
+    font-size: .875rem;
+  }
+
+  .xl\:text-tiny {
+    font-size: .875rem;
   }
 
   .xl\:text-base {
@@ -54358,6 +54418,14 @@ button[disabled]:hover {
 
   .xl\:text-6xl {
     font-size: 4rem;
+  }
+
+  .xl\:text-15xl {
+    font-size: 15rem;
+  }
+
+  .xl\:text-20xl {
+    font-size: 20rem;
   }
 
   .xl\:italic {

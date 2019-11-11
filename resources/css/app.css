@@ -3,9 +3,11 @@
 
 
 /* Components */
+@import "layout";
 @import "alerts";
 @import "buttons";
 @import "form";
 @import "transitions";
+
 
 @import "tailwindcss/utilities";

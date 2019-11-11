@@ -1,5 +1,5 @@
 .form-label {
-  @apply .mb-2 .block .text-gray-900 .select-none .font-serif .font-bold;
+  @apply .mb-2 .block .text-sm .text-gray-900 .select-none .font-serif .font-bold;
 }
 
 .form-input,
